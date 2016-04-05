@@ -1,0 +1,108 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="styles/styles.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script src="scripts/button-script.js" charset="utf-8"></script>
+<script src="scripts/menu-script.js" charset="utf-8"></script>
+
+<dom-module id="at-carbon-menu-button">
+  <template>
+    <style include="at-carbon-menu-button-styles"></style>
+    <style>
+    </style>
+    <div id="menuContainer">
+      <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">more_vert</i>
+      </button>
+      <ul id="menuContent" class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
+        <li class="mdl-menu__item">Some Action</li>
+        <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
+        <li disabled class="mdl-menu__item">Disabled Action</li>
+        <li class="mdl-menu__item">Yet Another Action</li>
+      </ul>
+    </div>
+  </template>
+  <script>
+    'use strict';
+    Polymer({
+      is: 'at-carbon-menu-button',
+      properties: {
+        position: {
+          type: String,
+          value: "bottomLeft",
+          observer: 'positionChanged',
+          xtype: "enum",
+          xvaluelist: [{
+            title: "Top Left",
+            value: "topLeft"
+          }, {
+            title: "Top Right",
+            value: "topRight"
+          }, {
+            title: "Bottom Left",
+            value: "bottomLeft"
+          }, {
+            title: "Bottom Right",
+            value: "bottomRight"
+          }]
+        }
+      },
+      ready: function() {
+        // var componentRoot = this.$.menuContainer;
+        // var menuContainer = this.$.menuContent;
+        // var materialMenu = AtCarbon.MaterialMenu(menuContainer, componentRoot);
+        this._isReady = true;
+      },
+      _isPositionValueValid: function (value) {
+        var list = this.properties.position.xvaluelist;
+        var found = list.find(function (item) {
+          return item.value === value;
+        });
+        var result = found !== undefined;
+        return result;
+      },
+      positionChanged: function (newValue, oldValue) {
+        if (!this._isAttached) {
+          return;
+        }
+        var valid = this._isPositionValueValid(newValue);
+        if (valid) {
+          // tear down previous position
+          if (this._materialMenu !== undefined) {
+            this._materialMenu.tearDown();
+            this._materialMenu = false;
+          }
+          // update css class
+          var baseName = 'mdl-menu--';
+          var basePrefix = 'bottom-left';
+          var className = baseName + basePrefix;
+          if (oldValue) {
+            className = baseName + Polymer.CaseMap.camelToDashCase(oldValue);
+          }
+          var menuContent = this.$.menuContent;
+          Polymer.dom(menuContent).classList.remove(className);
+          if (newValue) {
+            className = baseName + Polymer.CaseMap.camelToDashCase(newValue);
+          }
+          Polymer.dom(menuContent).classList.add(className);
+
+          this._createMaterialMenu();
+        }
+        // else do nothing
+      },
+      _createMaterialMenu: function () {
+        if (!this._materialMenu) {
+          var componentRoot = this.$.menuContainer;
+          var menuContainer = this.$.menuContent;
+          this._materialMenu = AtCarbon.MaterialMenu(menuContainer, componentRoot);
+        }
+      },
+      attached: function() {
+        this._createMaterialMenu();
+        this._isAttached = true;
+      }
+    });
+  </script>
+</dom-module>
+<script>
+</script>
