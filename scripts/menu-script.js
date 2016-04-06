@@ -4,7 +4,7 @@
   /**
    * Class constructor for dropdown MDL component.
    * Implements MDL component design pattern defined at:
-   * https://github.com/jasonmayes/mdl-component-design-pattern
+   * https://github.com/jasonmayes/acmb-component-design-pattern
    *
    * @constructor
    * @param {HTMLElement} element The element that will be upgraded.
@@ -57,23 +57,23 @@
    * @private
    */
   MaterialMenu.prototype.CssClasses_ = {
-    CONTAINER: 'mdl-menu__container',
-    OUTLINE: 'mdl-menu__outline',
-    ITEM: 'mdl-menu__item',
-    ITEM_RIPPLE_CONTAINER: 'mdl-menu__item-ripple-container',
-    RIPPLE_EFFECT: 'mdl-js-ripple-effect',
-    RIPPLE_IGNORE_EVENTS: 'mdl-js-ripple-effect--ignore-events',
-    RIPPLE: 'mdl-ripple',
+    CONTAINER: 'acmb-menu__container',
+    OUTLINE: 'acmb-menu__outline',
+    ITEM: 'acmb-menu__item',
+    ITEM_RIPPLE_CONTAINER: 'acmb-menu__item-ripple-container',
+    RIPPLE_EFFECT: 'acmb-js-ripple-effect',
+    RIPPLE_IGNORE_EVENTS: 'acmb-js-ripple-effect--ignore-events',
+    RIPPLE: 'acmb-ripple',
     // Statuses
     IS_UPGRADED: 'is-upgraded',
     IS_VISIBLE: 'is-visible',
     IS_ANIMATING: 'is-animating',
     // Alignment options
-    BOTTOM_LEFT: 'mdl-menu--bottom-left', // This is the default.
-    BOTTOM_RIGHT: 'mdl-menu--bottom-right',
-    TOP_LEFT: 'mdl-menu--top-left',
-    TOP_RIGHT: 'mdl-menu--top-right',
-    UNALIGNED: 'mdl-menu--unaligned'
+    BOTTOM_LEFT: 'acmb-menu--bottom-left', // This is the default.
+    BOTTOM_RIGHT: 'acmb-menu--bottom-right',
+    TOP_LEFT: 'acmb-menu--top-left',
+    TOP_RIGHT: 'acmb-menu--top-right',
+    UNALIGNED: 'acmb-menu--unaligned'
   };
 
   /**
@@ -96,7 +96,7 @@
       Polymer.dom(container).insertBefore(outline, this.element_);
 
       // Find the "for" element and bind events to it.
-      var forElId = this.element_.getAttribute('for') || this.element_.getAttribute('data-mdl-for');
+      var forElId = this.element_.getAttribute('for') || this.element_.getAttribute('data-acmb-for');
       var forEl = null;
       if (forElId) {
         forEl = Polymer.dom(this.componentRoot_).querySelector('#'+forElId);
@@ -168,7 +168,7 @@
     // this.element_ is the element being downgraded
     var container = this.element_.parentElement;
     var containerParent = container.parentElement;
-    var outline = Polymer.dom(container).querySelector('.mdl-menu__outline');
+    var outline = Polymer.dom(container).querySelector('.acmb-menu__outline');
 
     // remove this.element_ from container
     Polymer.dom(container).removeChild(this.element_);
@@ -183,7 +183,7 @@
 
     // Find the "for" element and unbind events form it.
     this.forElement_ = false;
-    var forElId = this.element_.getAttribute('for') || this.element_.getAttribute('data-mdl-for');
+    var forElId = this.element_.getAttribute('for') || this.element_.getAttribute('data-acmb-for');
     var forEl = null;
     if (forElId) {
       forEl = Polymer.dom(this.componentRoot_).querySelector('#'+forElId);
@@ -528,7 +528,7 @@
   // componentHandler.register({
   //   constructor: MaterialMenu,
   //   classAsString: 'MaterialMenu',
-  //   cssClass: 'mdl-js-menu',
+  //   cssClass: 'acmb-js-menu',
   //   widget: true
   // });
 })(window.AtCarbon = window.AtCarbon || {});

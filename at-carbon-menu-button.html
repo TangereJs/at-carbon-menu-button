@@ -2,23 +2,25 @@
 <link rel="import" href="styles/styles.html">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<script src="scripts/button-script.js" charset="utf-8"></script>
 <script src="scripts/menu-script.js" charset="utf-8"></script>
 
 <dom-module id="at-carbon-menu-button">
   <template>
     <style include="at-carbon-menu-button-styles"></style>
     <style>
+      #menuContainer {
+        position: relative;
+      }
     </style>
     <div id="menuContainer">
-      <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
+      <button id="demo-menu-lower-left" class="acmb-button acmb-js-button acmb-button--icon">
         <i class="material-icons">more_vert</i>
       </button>
-      <ul id="menuContent" class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
-        <li class="mdl-menu__item">Some Action</li>
-        <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
-        <li disabled class="mdl-menu__item">Disabled Action</li>
-        <li class="mdl-menu__item">Yet Another Action</li>
+      <ul id="menuContent" class="acmb-menu acmb-menu--bottom-left acmb-js-menu acmb-js-ripple-effect" for="demo-menu-lower-left">
+        <li class="acmb-menu__item">Some Action</li>
+        <li class="acmb-menu__item acmb-menu__item--full-bleed-divider">Another Action</li>
+        <li disabled class="acmb-menu__item">Disabled Action</li>
+        <li class="acmb-menu__item">Yet Another Action</li>
       </ul>
     </div>
   </template>
@@ -73,7 +75,7 @@
             this._materialMenu = false;
           }
           // update css class
-          var baseName = 'mdl-menu--';
+          var baseName = 'acmb-menu--';
           var basePrefix = 'bottom-left';
           var className = baseName + basePrefix;
           if (oldValue) {
