@@ -1,28 +1,21 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="styles/styles.html">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-<script src="scripts/menu-script.js" charset="utf-8"></script>
+<link rel="import" href="../at-carbon-icon-button/at-carbon-icon-button.html">
+<link rel="import" href="../at-core-dropdown/at-core-dropdown.html">
 
 <dom-module id="at-carbon-menu-button">
   <template>
-    <style include="at-carbon-menu-button-styles"></style>
     <style>
-      #menuContainer {
-        position: relative;
-      }
+
     </style>
-    <div id="menuContainer">
-      <button id="demo-menu-lower-left" class="acmb-button acmb-js-button acmb-button--icon">
-        <i class="material-icons">more_vert</i>
-      </button>
-      <ul id="menuContent" class="acmb-menu acmb-menu--bottom-left acmb-js-menu acmb-js-ripple-effect" for="demo-menu-lower-left">
-        <li class="acmb-menu__item">Some Action</li>
-        <li class="acmb-menu__item acmb-menu__item--full-bleed-divider">Another Action</li>
-        <li disabled class="acmb-menu__item">Disabled Action</li>
-        <li class="acmb-menu__item">Yet Another Action</li>
-      </ul>
-    </div>
+    <at-carbon-icon-button id="button" icon="now:menu"></at-carbon-icon-button>
+    <at-core-dropdown id="dropdown" position="{{position}}">
+      <content>
+        <div class="">Item 1</div>
+        <div class="">Item 2</div>
+        <div class="">Item 3</div>
+        <div class="">Item 4</div>
+      </content>
+    </at-core-dropdown>
   </template>
   <script>
     'use strict';
@@ -32,7 +25,6 @@
         position: {
           type: String,
           value: "bottomLeft",
-          observer: 'positionChanged',
           xtype: "enum",
           xvaluelist: [{
             title: "Top Left",
@@ -49,59 +41,13 @@
           }]
         }
       },
-      ready: function() {
-        // var componentRoot = this.$.menuContainer;
-        // var menuContainer = this.$.menuContent;
-        // var materialMenu = AtCarbon.MaterialMenu(menuContainer, componentRoot);
-        this._isReady = true;
-      },
-      _isPositionValueValid: function (value) {
-        var list = this.properties.position.xvaluelist;
-        var found = list.find(function (item) {
-          return item.value === value;
-        });
-        var result = found !== undefined;
-        return result;
-      },
-      positionChanged: function (newValue, oldValue) {
-        if (!this._isAttached) {
-          return;
-        }
-        var valid = this._isPositionValueValid(newValue);
-        if (valid) {
-          // tear down previous position
-          if (this._materialMenu !== undefined) {
-            this._materialMenu.tearDown();
-            this._materialMenu = false;
-          }
-          // update css class
-          var baseName = 'acmb-menu--';
-          var basePrefix = 'bottom-left';
-          var className = baseName + basePrefix;
-          if (oldValue) {
-            className = baseName + Polymer.CaseMap.camelToDashCase(oldValue);
-          }
-          var menuContent = this.$.menuContent;
-          Polymer.dom(menuContent).classList.remove(className);
-          if (newValue) {
-            className = baseName + Polymer.CaseMap.camelToDashCase(newValue);
-          }
-          Polymer.dom(menuContent).classList.add(className);
+      ready: function () {
+        var button = this.$.button;
+        var dropdown = this.$.dropdown;
 
-          this._createMaterialMenu();
-        }
-        // else do nothing
-      },
-      _createMaterialMenu: function () {
-        if (!this._materialMenu) {
-          var componentRoot = this.$.menuContainer;
-          var menuContainer = this.$.menuContent;
-          this._materialMenu = AtCarbon.MaterialMenu(menuContainer, componentRoot);
-        }
-      },
-      attached: function() {
-        this._createMaterialMenu();
-        this._isAttached = true;
+        button.addEventListener('click', function(event) {
+          dropdown.toggle(button, event);
+        });
       }
     });
   </script>
