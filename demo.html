@@ -6,11 +6,52 @@
 
     <link rel="import" href="../webcomponentsjs/webcomponents-lite.js">
     <link rel="import" href="../polymer/polymer.html">
+    <link rel="import" href="../at-theme/at-theme.html">
     <link rel="import" href="at-carbon-menu-button.html">
   </head>
   <body>
-    <div>
-      <at-carbon-menu-button></at-carbon-menu-button>
+    <div class="horizontal layout">
+      <h3>at-carbon-menu-button demo</h4>
+    </div>
+    <div class="horizontal layout">
+      <div class="flex">
+        <h4>This menu is positioned to the bottom left of the button</h4>
+        <at-carbon-menu-button>
+          <div class="">Item 1</div>
+          <div class="">Item 2</div>
+          <div class="">Item 3</div>
+          <div class="">Item 4</div>
+        </at-carbon-menu-button>
+      </div>
+      <div class="flex">
+        <h4>This menu is positioned to the bottom right of the button</h4>
+        <at-carbon-menu-button position="bottomRight">
+          <div class="">Item 1</div>
+          <div class="">Item 2</div>
+          <div class="">Item 3</div>
+          <div class="">Item 4</div>
+        </at-carbon-menu-button>
+      </div>
+    </div>
+    <div class="horizontal layout">
+      <div class="flex">
+        <h4>This menu is positioned to the top left of the button</h4>
+        <at-carbon-menu-button position="topLeft">
+          <div class="">Item 1</div>
+          <div class="">Item 2</div>
+          <div class="">Item 3</div>
+          <div class="">Item 4</div>
+        </at-carbon-menu-button>
+      </div>
+      <div class="flex">
+        <h4>This menu is positioned to the top right of the button</h4>
+        <at-carbon-menu-button position="topRight">
+          <div class="">Item 1</div>
+          <div class="">Item 2</div>
+          <div class="">Item 3</div>
+          <div class="">Item 4</div>
+        </at-carbon-menu-button>
+      </div>
     </div>
   </body>
 </html>

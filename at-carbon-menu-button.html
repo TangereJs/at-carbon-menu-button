@@ -5,15 +5,14 @@
 <dom-module id="at-carbon-menu-button">
   <template>
     <style>
-
+      :host {
+        position: relative;
+        display: block;
+      }
     </style>
     <at-carbon-icon-button id="button" icon="now:menu"></at-carbon-icon-button>
     <at-core-dropdown id="dropdown" position="{{position}}">
       <content>
-        <div class="">Item 1</div>
-        <div class="">Item 2</div>
-        <div class="">Item 3</div>
-        <div class="">Item 4</div>
       </content>
     </at-core-dropdown>
   </template>
