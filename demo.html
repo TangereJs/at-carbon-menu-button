@@ -8,6 +8,8 @@
     <link rel="import" href="../polymer/polymer.html">
     <link rel="import" href="../at-theme/at-theme.html">
     <link rel="import" href="at-carbon-menu-button.html">
+    <link rel="import" href="../paper-menu/paper-menu.html">
+    <link rel="import" href="../paper-item/paper-item.html">
   </head>
   <body>
     <div class="horizontal layout">
@@ -50,6 +52,20 @@
           <div class="">Item 2</div>
           <div class="">Item 3</div>
           <div class="">Item 4</div>
+        </at-carbon-menu-button>
+      </div>
+    </div>
+    <div class="horizontal layout">
+      <div class="flex">
+        <h4>This menu is positioned to the top left of the button</h4>
+        <h5>and contains paper-menu with paper-items</h5>
+        <at-carbon-menu-button position="bottomLeft">
+          <paper-menu>
+            <paper-item>Item 1</paper-item>
+            <paper-item>Item 2</paper-item>
+            <paper-item>Item 3</paper-item>
+            <paper-item>Item 4</paper-item>
+          </paper-menu>
         </at-carbon-menu-button>
       </div>
     </div>
