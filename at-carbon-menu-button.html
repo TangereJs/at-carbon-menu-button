@@ -5,16 +5,24 @@
 <dom-module id="at-carbon-menu-button">
   <template>
     <style>
-      :host {
+      :host .relative-container {
         position: relative;
         display: block;
+        height: 44px;
+      }
+      :host .absolute-container {
+        position: absolute;
       }
     </style>
-    <at-carbon-icon-button id="button" icon="now:menu"></at-carbon-icon-button>
-    <at-core-dropdown id="dropdown" position="{{position}}">
-      <content>
-      </content>
-    </at-core-dropdown>
+    <div class="relative-container">
+      <div class="absolute-container">
+        <at-carbon-icon-button id="button" icon="now:menu"></at-carbon-icon-button>
+        <at-core-dropdown id="dropdown" position="{{position}}">
+          <content>
+          </content>
+        </at-core-dropdown>
+      </div>
+    </div>
   </template>
   <script>
     'use strict';
