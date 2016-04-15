@@ -55,6 +55,16 @@
         button.addEventListener('click', function(event) {
           dropdown.toggle(button, event);
         });
+
+        var self = this;
+        document.addEventListener('click', function(event) {
+          var target = event.target;
+
+          if (target === button || (target !== button && button.contains(target))) { return; }
+          if (target === dropdown || (target !== dropdown && !dropdown.contains(target))) {
+            dropdown.hide();
+          }
+        });
       }
     });
   </script>
