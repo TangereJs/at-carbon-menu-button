@@ -10,6 +10,7 @@
         display: block;
         height: 44px;
       }
+
       :host .absolute-container {
         position: absolute;
       }
@@ -48,26 +49,36 @@
           }]
         }
       },
-      ready: function () {
+      ready: function() {
         var button = this.$.button;
         var dropdown = this.$.dropdown;
 
-        button.addEventListener('click', function(event) {
+        button.addEventListener('tap', function(event) {
           dropdown.toggle(button, event);
         });
 
         var self = this;
         document.addEventListener('click', function(event) {
+          _handleClickOrTap(event);
+        });
+        // safari on iPad and probably iPhone doesn't raise click event on document object; thanks apple
+        // it doesn't even raise tap event ... go figure
+        // instead one is suggested to use touchstart event; that works
+        document.addEventListener('touchstart', function(event) {
+          _handleClickOrTap(event);
+        });
+
+        function _handleClickOrTap(event) {
           var target = event.target;
 
-          if (target === button || (target !== button && button.contains(target))) { return; }
+          if (target === button || (target !== button && button.contains(target))) {
+            return;
+          }
           if (target === dropdown || (target !== dropdown && !dropdown.contains(target))) {
             dropdown.hide();
           }
-        });
+        }
       }
     });
   </script>
 </dom-module>
-<script>
-</script>
