@@ -58,17 +58,19 @@
         });
 
         var self = this;
+
         document.addEventListener('click', function(event) {
-          _handleClickOrTap(event);
-        });
-        // safari on iPad and probably iPhone doesn't raise click event on document object; thanks apple
-        // it doesn't even raise tap event ... go figure
-        // instead one is suggested to use touchstart event; that works
-        document.addEventListener('touchstart', function(event) {
-          _handleClickOrTap(event);
+          _handleClick(event);
         });
 
-        function _handleClickOrTap(event) {
+        // document.addEventListener('tap', function(event) {
+        //   // on Chrome Desktop, Firefox, IE11, Safari Desktop and iPad Safari this event is triggered only when user taps this.$.button
+        //   // tapping anywhere else in the document doesn't trigger tap event; this includes tapping on dropdown items
+        //   console.log('document tap');
+        //   _handleClick(event);
+        // });
+
+        function _handleClick(event) {
           var target = event.target;
 
           if (target === button || (target !== button && button.contains(target))) {
