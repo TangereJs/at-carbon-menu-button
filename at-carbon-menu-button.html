@@ -56,30 +56,6 @@
         button.addEventListener('tap', function(event) {
           dropdown.toggle(button, event);
         });
-
-        var self = this;
-
-        document.addEventListener('click', function(event) {
-          _handleClick(event);
-        });
-
-        // document.addEventListener('tap', function(event) {
-        //   // on Chrome Desktop, Firefox, IE11, Safari Desktop and iPad Safari this event is triggered only when user taps this.$.button
-        //   // tapping anywhere else in the document doesn't trigger tap event; this includes tapping on dropdown items
-        //   console.log('document tap');
-        //   _handleClick(event);
-        // });
-
-        function _handleClick(event) {
-          var target = event.target;
-
-          if (target === button || (target !== button && button.contains(target))) {
-            return;
-          }
-          if (target === dropdown || (target !== dropdown && !dropdown.contains(target))) {
-            dropdown.hide();
-          }
-        }
       }
     });
   </script>
