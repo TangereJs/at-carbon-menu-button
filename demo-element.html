@@ -15,6 +15,10 @@
       cursor: pointer;
     }
 
+    .menu-item.menu-item-selected {
+      background-color: lightgray;
+    }
+
     .menu-item:hover {
       background-color: lightgray;
     }
@@ -25,7 +29,7 @@
   <div class="horizontal layout">
     <div class="flex">
       <h4>This menu is positioned to the bottom left of the button</h4>
-      <at-carbon-menu-button>
+      <at-carbon-menu-button dropdown-item-class="menu-item" selected-item-class="menu-item-selected">
         <div class="menu-item">Item 1</div>
         <div class="menu-item">Item 2</div>
         <div class="menu-item">Item 3</div>
@@ -34,7 +38,7 @@
     </div>
     <div class="flex">
       <h4>This menu is positioned to the bottom right of the button</h4>
-      <at-carbon-menu-button position="bottomRight">
+      <at-carbon-menu-button position="bottomRight" dropdown-item-class="menu-item" selected-item-class="menu-item-selected">
         <div class="menu-item">Item 1</div>
         <div class="menu-item">Item 2</div>
         <div class="menu-item">Item 3</div>
@@ -45,7 +49,7 @@
   <div class="horizontal layout">
     <div class="flex">
       <h4>This menu is positioned to the top left of the button</h4>
-      <at-carbon-menu-button position="topLeft">
+      <at-carbon-menu-button position="topLeft" dropdown-item-class="menu-item" selected-item-class="menu-item-selected">
         <div class="menu-item">Item 1</div>
         <div class="menu-item">Item 2</div>
         <div class="menu-item">Item 3</div>
@@ -54,7 +58,7 @@
     </div>
     <div class="flex">
       <h4>This menu is positioned to the top right of the button</h4>
-      <at-carbon-menu-button position="topRight">
+      <at-carbon-menu-button position="topRight" dropdown-item-class="menu-item" selected-item-class="menu-item-selected">
         <div class="menu-item">Item 1</div>
         <div class="menu-item">Item 2</div>
         <div class="menu-item">Item 3</div>
@@ -66,7 +70,7 @@
     <div class="flex">
       <h4>This menu is positioned to the bottom left of the button</h4>
       <h5>and contains paper-menu with paper-items</h5>
-      <at-carbon-menu-button position="bottomLeft">
+      <at-carbon-menu-button position="bottomLeft" dropdown-item-class="" selected-item-class="">
         <paper-menu>
           <paper-item>Item 1</paper-item>
           <paper-item>Item 2</paper-item>

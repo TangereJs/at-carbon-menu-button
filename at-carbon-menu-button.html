@@ -18,7 +18,7 @@
     <div class="relative-container">
       <div class="absolute-container">
         <at-carbon-icon-button id="button" icon="now:menu"></at-carbon-icon-button>
-        <at-core-dropdown id="dropdown" position="{{position}}">
+        <at-core-dropdown id="dropdown" position="{{position}}" dropdown-item-class="{{dropdownItemClass}}" selected-item-class="{{selectedItemClass}}">
           <content>
           </content>
         </at-core-dropdown>
@@ -47,6 +47,14 @@
             title: "Bottom Right",
             value: "bottomRight"
           }]
+        },
+        dropdownItemClass: {
+          type: String,
+          value: 'dropdown-item'
+        },
+        selectedItemClass: {
+          type: String,
+          value: 'selected-item'
         }
       },
       ready: function() {
