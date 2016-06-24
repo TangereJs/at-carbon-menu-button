@@ -26,7 +26,8 @@
   <div class="horizontal layout">
     <div class="flex">
       <h4>This menu is positioned to the bottom left of the button</h4>
-      <at-carbon-menu-button dropdown-item-class="menu-item" selected-item-class="menu-item-selected">
+      <div id=menu1Echo></div>
+      <at-carbon-menu-button id="menu1">
         <div class="menu-item">Item 1</div>
         <div class="menu-item">Item 2</div>
         <div class="menu-item">Item 3</div>
@@ -35,7 +36,8 @@
     </div>
     <div class="flex">
       <h4>This menu is positioned to the bottom right of the button</h4>
-      <at-carbon-menu-button position="bottomRight" dropdown-item-class="menu-item" selected-item-class="menu-item-selected">
+      <div id=menu2Echo></div>
+      <at-carbon-menu-button id="menu2" position="bottomRight">
         <div class="menu-item">Item 1</div>
         <div class="menu-item">Item 2</div>
         <div class="menu-item">Item 3</div>
@@ -46,21 +48,23 @@
   <div class="horizontal layout">
     <div class="flex">
       <h4>This menu is positioned to the top left of the button</h4>
-      <at-carbon-menu-button position="topLeft" dropdown-item-class="menu-item" selected-item-class="menu-item-selected">
+      <at-carbon-menu-button id="menu3" position="topLeft">
         <div class="menu-item">Item 1</div>
         <div class="menu-item">Item 2</div>
         <div class="menu-item">Item 3</div>
         <div class="menu-item">Item 4</div>
       </at-carbon-menu-button>
+      <div id=menu3Echo></div>
     </div>
     <div class="flex">
       <h4>This menu is positioned to the top right of the button</h4>
-      <at-carbon-menu-button position="topRight" dropdown-item-class="menu-item" selected-item-class="menu-item-selected">
+      <at-carbon-menu-button id="menu4" position="topRight">
         <div class="menu-item">Item 1</div>
         <div class="menu-item">Item 2</div>
         <div class="menu-item">Item 3</div>
         <div class="menu-item">Item 4</div>
       </at-carbon-menu-button>
+      <div id=menu4Echo></div>
     </div>
   </div>
   <div class="horizontal layout">
@@ -87,6 +91,61 @@
       },
       ready: function () {
 
+        var menuItems = [{
+          title: "Item 1",
+          value: "item1"
+        },{
+          title: "Item 2",
+          value: "item2"
+        },{
+          title: "Item 3",
+          value: "item3"
+        },{
+          title: "Item 4",
+          value: "item4"
+        },{
+          title: "Item 5",
+          value: "item5"
+        }];
+
+        var menu1 = this.$.menu1;
+        var menu1Echo = this.$.menu1Echo;
+        menu1.items = menuItems;
+        menu1.addEventListener('value-changed', function(event) {
+          menu1Echo.textContent = menu1.value;
+        });
+
+        var menu2 = this.$.menu2;
+        var menu2Echo = this.$.menu2Echo;
+        menu2.items = menuItems;
+        menu2.addEventListener('value-changed', function(event) {
+          menu2Echo.textContent = menu2.value;
+        });
+
+        menuItems = [{
+          title: "Pear",
+          value: "pear"
+        },{
+          title: "Apple",
+          value: "apple"
+        },{
+          title: "Watermellon",
+          value: "watermellon"
+        }];
+
+        var menu3 = this.$.menu3;
+        var menu3Echo = this.$.menu3Echo;
+        menu3.items = menuItems;
+        menu3.addEventListener('value-changed', function(event) {
+          menu3Echo.textContent = menu3.value;
+        });
+
+        var menu4 = this.$.menu4;
+        var menu4Echo = this.$.menu4Echo;
+        menu4.items = menuItems;
+        menu4.addEventListener('value-changed', function(event) {
+          menu4Echo.textContent = menu4.value;
+        });
       }
     });
   </script>

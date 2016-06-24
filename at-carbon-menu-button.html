@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../at-carbon-icon-button/at-carbon-icon-button.html">
+<link rel="import" href="../at-carbon-menu/at-carbon-menu.html">
 <link rel="import" href="../at-core-dropdown/at-core-dropdown.html">
 
 <dom-module id="at-carbon-menu-button">
@@ -17,10 +18,11 @@
     </style>
     <div class="relative-container">
       <div class="absolute-container">
-        <at-carbon-icon-button id="button" icon="now:menu"></at-carbon-icon-button>
-        <at-core-dropdown id="dropdown" position="{{position}}" dropdown-item-class="{{dropdownItemClass}}" selected-item-class="{{selectedItemClass}}">
-          <content>
-          </content>
+        <at-carbon-icon-button id="trigger" class="{{trigger}}" icon="now:menu"></at-carbon-icon-button>
+        <at-core-dropdown id="dropdown" position="{{position}}">
+          <at-carbon-menu id="menu" items="{{items}}" value={{value}}>
+            <content></content>
+          </at-carbon-menu>
         </at-core-dropdown>
       </div>
     </div>
@@ -48,21 +50,45 @@
             value: "bottomRight"
           }]
         },
-        dropdownItemClass: {
-          type: String,
-          value: 'dropdown-item'
+        items: {
+          type: Array,
+          value: function() {
+            return [];
+          },
         },
-        selectedItemClass: {
+        value: {
           type: String,
-          value: 'selected-item'
+          value: "",
+          notify: true
         }
       },
       ready: function() {
-        var button = this.$.button;
+        var trigger = this.$.trigger;
         var dropdown = this.$.dropdown;
+        var menu = this.$.menu;
 
-        button.addEventListener('tap', function(event) {
-          dropdown.toggle(button, event);
+        trigger.addEventListener('tap', function(event) {
+          dropdown.toggle(trigger, event);
+          // var tabEvent = document.createEvent("KeyboardEvent");
+          // var initMethod = typeof tabEvent.initKeyboardEvent !== 'undefined' ? "initKeyboardEvent" : "initKeyEvent";
+          // tabEvent[initMethod](
+          //  "keydown", // event type : keydown, keyup, keypress
+          //   true, // bubbles
+          //   true, // cancelable
+          //   window, // viewArg: should be window
+          //   false, // ctrlKeyArg
+          //   false, // altKeyArg
+          //   false, // shiftKeyArg
+          //   false, // metaKeyArg
+          //   9, // keyCodeArg : unsigned long the virtual key code, else 0
+          //   0 // charCodeArgs : unsigned long the Unicode character associated with the depressed key, else 0
+          // );
+          // menu.dispatchEvent(tabEvent);
+
+          var focusEvent = document.createEvent('HTMLEvents');
+          focusEvent.initEvent('focus', true, true);
+          menu.dispatchEvent(focusEvent);
+
         });
       }
     });
