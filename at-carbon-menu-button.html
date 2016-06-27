@@ -18,7 +18,7 @@
     </style>
     <div class="relative-container">
       <div class="absolute-container">
-        <at-carbon-icon-button id="trigger" class="{{trigger}}" icon="now:menu"></at-carbon-icon-button>
+        <at-carbon-icon-button id="trigger" class="trigger" icon="now:menu" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown"></at-carbon-icon-button>
         <at-core-dropdown id="dropdown" position="{{position}}">
           <at-carbon-menu id="menu" items="{{items}}" value={{value}}>
             <content></content>
@@ -62,33 +62,78 @@
           notify: true
         }
       },
+
+      /********************************************************************************/
+      /* _keyCodes, _trigger_onTap, _trigger_onKeydown, _enterSpaceGuard and menu.addEventListener('value-changed')
+      /* All right, what is going on here
+      /* Its not possible to give at-carbon-menu keyboard focus programmatically.
+      /* at-carbon-menu has tabindex = 0, but at-carbon-menu.focus() doesn't do anything
+      /* Right how at-carbon-menu.insertPoint has tabindex = 0, and a custom focus function that focuses insertPoint,
+      /* but still at-carbon-menu doesn't have keyboard focus. So far only way at-carbon-menu gets keyboard focus is TAB key
+      /* as a workaround for this limitation of HTML TAB and ESC keys are handled in at-carbon-menu-button
+      /* every other key is forwarded to at-carbon-menu
+      /********************************************************************************/
+
+      _keyCodes: {
+        ESC: 27,
+        TAB: 9,
+        ARROW_UP: 38,
+        ARROW_DOWN: 40,
+        ENTER: 13,
+        SPACE: 32
+      },
+
+      _trigger_onTap: function (event) {
+        this.$.menu._host_onTap(event);
+      },
+
+      _trigger_onKeydown: function (event) {
+        var menu = this.$.menu;
+        var dropdown = this.$.dropdown;
+
+        var keyCodes = this._keyCodes;
+        var keyCode = event.which;
+
+        switch (keyCode) {
+          case this._keyCodes.TAB:
+            if (dropdown.isOpen()){
+              menu._select();
+              dropdown.hide();
+            }
+            break;
+          case keyCodes.ENTER:
+          case keyCodes.SPACE:
+            if (dropdown.isOpen()){
+              this._enterSpaceGuard = true;
+              menu._select();
+              dropdown.hide();
+            }
+            break;
+          case this._keyCodes.ESC:
+            dropdown.hide();
+            break;
+          default:
+            menu._host_onKeydown(event);
+            break;
+        }
+      },
+
       ready: function() {
         var trigger = this.$.trigger;
         var dropdown = this.$.dropdown;
         var menu = this.$.menu;
+        var self = this;
 
         trigger.addEventListener('tap', function(event) {
+          if (self._enterSpaceGuard) {
+            self._enterSpaceGuard = false;
+            return ;
+          }
           dropdown.toggle(trigger, event);
-          // var tabEvent = document.createEvent("KeyboardEvent");
-          // var initMethod = typeof tabEvent.initKeyboardEvent !== 'undefined' ? "initKeyboardEvent" : "initKeyEvent";
-          // tabEvent[initMethod](
-          //  "keydown", // event type : keydown, keyup, keypress
-          //   true, // bubbles
-          //   true, // cancelable
-          //   window, // viewArg: should be window
-          //   false, // ctrlKeyArg
-          //   false, // altKeyArg
-          //   false, // shiftKeyArg
-          //   false, // metaKeyArg
-          //   9, // keyCodeArg : unsigned long the virtual key code, else 0
-          //   0 // charCodeArgs : unsigned long the Unicode character associated with the depressed key, else 0
-          // );
-          // menu.dispatchEvent(tabEvent);
+        });
 
-          var focusEvent = document.createEvent('HTMLEvents');
-          focusEvent.initEvent('focus', true, true);
-          menu.dispatchEvent(focusEvent);
-
+        menu.addEventListener('value-changed', function(event) {
+          dropdown.hide();
         });
       }
     });
