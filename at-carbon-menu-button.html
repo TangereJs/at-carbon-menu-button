@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../tangere/tangere.html">
 <link rel="import" href="../at-carbon-icon-button/at-carbon-icon-button.html">
 <link rel="import" href="../at-carbon-menu/at-carbon-menu.html">
 <link rel="import" href="../at-core-dropdown/at-core-dropdown.html">
@@ -20,9 +20,7 @@
       <div class="absolute-container">
         <at-carbon-icon-button id="trigger" class="trigger" icon="now:menu" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown"></at-carbon-icon-button>
         <at-core-dropdown id="dropdown" position="{{position}}">
-          <at-carbon-menu id="menu" items="{{items}}" value={{value}}>
-            <content></content>
-          </at-carbon-menu>
+          <at-carbon-menu id="menu" items="{{items}}" value={{value}}></at-carbon-menu>
         </at-core-dropdown>
       </div>
     </div>
@@ -55,6 +53,22 @@
           value: function() {
             return [];
           },
+          schema: {
+            items: {
+              properties: {
+                title: {
+                  type: String,
+                  title: "Title",
+                  "default": ""
+                },
+                value: {
+                  type: String,
+                  title: "Value",
+                  "default": ""
+                }
+              }
+            }
+          }
         },
         value: {
           type: String,

@@ -1,8 +1,6 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../tangere/tangere.html">
 <link rel="import" href="../at-theme/at-theme.html">
 <link rel="import" href="at-carbon-menu-button.html">
-<link rel="import" href="../paper-menu/paper-menu.html">
-<link rel="import" href="../paper-item/paper-item.html">
 
 <dom-module id="demo-element">
   <template>
@@ -27,58 +25,24 @@
     <div class="flex">
       <h4>This menu is positioned to the bottom left of the button</h4>
       <div id=menu1Echo></div>
-      <at-carbon-menu-button id="menu1">
-        <div class="menu-item">Item 1</div>
-        <div class="menu-item">Item 2</div>
-        <div class="menu-item">Item 3</div>
-        <div class="menu-item">Item 4</div>
-      </at-carbon-menu-button>
+      <at-carbon-menu-button id="menu1"></at-carbon-menu-button>
     </div>
     <div class="flex">
       <h4>This menu is positioned to the bottom right of the button</h4>
       <div id=menu2Echo></div>
-      <at-carbon-menu-button id="menu2" position="bottomRight">
-        <div class="menu-item">Item 1</div>
-        <div class="menu-item">Item 2</div>
-        <div class="menu-item">Item 3</div>
-        <div class="menu-item">Item 4</div>
-      </at-carbon-menu-button>
+      <at-carbon-menu-button id="menu2" position="bottomRight"></at-carbon-menu-button>
     </div>
   </div>
   <div class="horizontal layout">
     <div class="flex">
       <h4>This menu is positioned to the top left of the button</h4>
-      <at-carbon-menu-button id="menu3" position="topLeft">
-        <div class="menu-item">Item 1</div>
-        <div class="menu-item">Item 2</div>
-        <div class="menu-item">Item 3</div>
-        <div class="menu-item">Item 4</div>
-      </at-carbon-menu-button>
+      <at-carbon-menu-button id="menu3" position="topLeft"></at-carbon-menu-button>
       <div id=menu3Echo></div>
     </div>
     <div class="flex">
       <h4>This menu is positioned to the top right of the button</h4>
-      <at-carbon-menu-button id="menu4" position="topRight">
-        <div class="menu-item">Item 1</div>
-        <div class="menu-item">Item 2</div>
-        <div class="menu-item">Item 3</div>
-        <div class="menu-item">Item 4</div>
-      </at-carbon-menu-button>
+      <at-carbon-menu-button id="menu4" position="topRight"></at-carbon-menu-button>
       <div id=menu4Echo></div>
-    </div>
-  </div>
-  <div class="horizontal layout">
-    <div class="flex">
-      <h4>This menu is positioned to the bottom left of the button</h4>
-      <h5>and contains paper-menu with paper-items</h5>
-      <at-carbon-menu-button position="bottomLeft" dropdown-item-class="" selected-item-class="">
-        <paper-menu>
-          <paper-item>Item 1</paper-item>
-          <paper-item>Item 2</paper-item>
-          <paper-item>Item 3</paper-item>
-          <paper-item>Item 4</paper-item>
-        </paper-menu>
-      </at-carbon-menu-button>
     </div>
   </div>
   </template>
