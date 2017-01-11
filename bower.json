@@ -3,11 +3,11 @@
   "private": true,
   "version": "1.0.0.2",
   "dependencies": {
-    "tangere": "TangereJs/tangere#0.8-preview",
-    "at-carbon-icon-button": "tangerejs/at-carbon-icon-button#0.8-preview",
-    "at-core-dropdown": "tangerejs/at-core-dropdown#0.8-preview",
-    "at-carbon-menu": "TangereJs/at-carbon-menu#0.8-preview",
-    "at-doc-viewer": "TangereJs/at-doc-viewer#0.8-preview",
-    "at-theme": "TangereJs/at-theme#0.8-preview"
+    "tangere": "TangereJs/tangere#master",
+    "at-carbon-icon-button": "tangerejs/at-carbon-icon-button#master",
+    "at-core-dropdown": "tangerejs/at-core-dropdown#master",
+    "at-carbon-menu": "TangereJs/at-carbon-menu#master",
+    "at-doc-viewer": "TangereJs/at-doc-viewer#master",
+    "at-theme": "TangereJs/at-theme#master"
   }
 }
