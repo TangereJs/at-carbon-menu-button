@@ -6,21 +6,29 @@
 <dom-module id="at-carbon-menu-button">
   <template>
     <style>
+    :host {
+        display: block;
+        box-sizing: border-box;
+    }
+
       :host .relative-container {
         position: relative;
         display: block;
         height: 44px;
+
       }
 
       :host .absolute-container {
         position: absolute;
+        top: 100px;
+        left: 100px;
       }
     </style>
     <div class="relative-container">
       <div class="absolute-container">
-        <at-carbon-icon-button id="trigger" class="trigger" icon="now:menu" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown"></at-carbon-icon-button>
-        <at-core-dropdown id="dropdown" position="{{position}}">
-          <at-carbon-menu id="menu" items="{{items}}" value={{value}}></at-carbon-menu>
+        <at-carbon-icon-button id="trigger" class="trigger" icon="[[icon]]" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown"></at-carbon-icon-button>
+        <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}">
+          <at-carbon-menu id="menu" items="{{items}}" value={{value}} item-view="{{itemView}}"></at-carbon-menu>
         </at-core-dropdown>
       </div>
     </div>
@@ -48,6 +56,11 @@
             value: "bottomRight"
           }]
         },
+        icon: {
+          type: String,
+          title: "Icon",
+          value: "now:menu"
+        },
         items: {
           type: Array,
           value: function() {
@@ -55,7 +68,7 @@
           },
           schema: {
             items: {
-              properties: {
+              properties: {                
                 title: {
                   type: String,
                   title: "Title",
@@ -65,6 +78,11 @@
                   type: String,
                   title: "Value",
                   "default": ""
+                },
+                icon: {
+                  type: String,
+                  title: "Icon",
+                  "default": "now:menu"
                 }
               }
             }
@@ -74,6 +92,18 @@
           type: String,
           value: "",
           notify: true
+        },
+        itemView: {
+          type: String,
+          value: '<div><at-carbon-icon icon="{{icon}}"></at-carbon-icon>{{title}}</div>'
+        },
+        xOffset: {
+          type: Number,
+          value: 0
+        },
+        yOffset: {
+          type: Number,
+          value: 0
         }
       },
 
