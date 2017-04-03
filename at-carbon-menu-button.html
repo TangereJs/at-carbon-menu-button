@@ -24,7 +24,7 @@
     </style>
     <div class="relative-container">
       <div class="absolute-container">
-        <at-carbon-icon-button id="trigger" class="trigger" icon="[[icon]]" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown"></at-carbon-icon-button>
+        <at-carbon-icon-button id="trigger" class="trigger" icon="[[icon]]" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
         <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}">
           <at-carbon-menu id="menu" items="{{items}}" value={{value}} item-view="{{itemView}}"></at-carbon-menu>
         </at-core-dropdown>
@@ -103,6 +103,10 @@
         yOffset: {
           type: Number,
           value: 0
+        },
+        color: {
+          type: String,
+          value: ""
         }
       },
 
