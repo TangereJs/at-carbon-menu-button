@@ -6,12 +6,12 @@
 <dom-module id="at-carbon-menu-button">
   <template>
     <style>
-    :host {
-        display: block;
-        box-sizing: border-box;
-        width: 40px;
-        height: 40px;
-    }
+      :host {
+          display: block;
+          box-sizing: border-box;
+          width: 40px;
+          height: 40px;
+      }
 
       :host .relative-container {
         position: relative;
@@ -33,7 +33,7 @@
       <div class="absolute-container">
         <at-carbon-icon-button id="trigger" class="trigger" icon="[[icon]]" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
         <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}">
-          <at-carbon-menu id="menu" items="{{items}}" value={{value}} item-view="{{itemView}}"></at-carbon-menu>
+          <at-carbon-menu id="menu" items="{{items}}" value="[[value]]" item-view="{{itemView}}"></at-carbon-menu>
         </at-core-dropdown>
       </div>
     </div>
@@ -96,8 +96,7 @@
         },
         value: {
           type: String,
-          value: "",
-          notify: true
+          value: ""
         },
         itemView: {
           type: String,
@@ -190,6 +189,9 @@
 
         menu.addEventListener('value-changed', function(event) {
           dropdown.hide();
+          // *ij* with value notify true, repeated clicks on the same menu item do not trigger value-changed
+          // when value-changed is fired manually repeated clicks trigger value-changed as expected
+          self.fire('value-changed', { value: event.detail.value }, { bubbles: false });
         });
       }
     });
