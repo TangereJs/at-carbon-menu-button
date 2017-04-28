@@ -28,6 +28,14 @@
       :host .absolute-container {
         position: absolute;
       }
+
+      .icon-class {
+        padding: 0 12px 0 0;
+      }
+
+      .title-class {
+        vertical-align: middle;        
+      }
     </style>
     <div class="relative-container">
       <div class="absolute-container">
@@ -102,7 +110,7 @@
           type: String,
           xtype: 'code',
           mode: 'liquidmixed',
-          value: '<div><at-carbon-icon icon="{{icon}}"></at-carbon-icon>{{title}}</div>'
+          value: '<div><at-carbon-icon icon="{{icon}}" class="icon-class at-carbon-menu-button"></at-carbon-icon><span class="title-class at-carbon-menu-button">{{title}}</span></div>'
         },
         xOffset: {
           type: Number,
