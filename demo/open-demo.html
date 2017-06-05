@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>at-carbon-menu-button demo page</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../at-theme/at-theme.html" />
+  <link rel="import" href="../at-carbon-menu-button.html">
+
+  <style is="custom-style">
+    body {
+      margin: 0 25%;
+    }
+
+    .page-title {
+      @apply(--paper-font-body1);
+      font-weight: 600;
+      font-size: 28px;      
+    }
+
+    .toggle-button {
+      display: block;
+      padding: 12px 20px;
+    }
+
+    .echo-text {
+      @apply(--paper-font-body1);
+      font-size: 16px;
+    }
+
+    .dropdown-line {
+     @apply(--paper-font-body1);
+      font-size: 16px;
+      padding: 0 0 0 4px;
+      margin: 4px 0; 
+    }
+
+    .demo-container {
+      margin-top: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="page-title">at-carbon-menu-button open property demo</h1>
+  <div class="demo-container">
+    <button id="toggle" type="button" class="toggle-button">Toggle open state</button>
+    <div class="echo-text">Menu button is currently <span id="openEcho"></span></div>
+    <at-carbon-menu-button id="menuButton"></at-carbon-menu-button>    
+  </div>
+
+  <div class="demo-container">
+    <button id="toggle2" type="button" class="toggle-button">Toggle open state</button>
+    <div class="echo-text">Menu button is currently <span id="openEcho2"></span></div>
+    <at-carbon-menu-button id="menuButton2" position="bottomRight"></at-carbon-menu-button>    
+  </div>
+
+  <div class="demo-container">
+    <button id="toggle3" type="button" class="toggle-button">Toggle open state</button>
+    <div class="echo-text">Menu button is currently <span id="openEcho3"></span></div>
+    <at-carbon-menu-button id="menuButton3" position="topRight"></at-carbon-menu-button>    
+  </div>
+
+  <div class="demo-container">
+    <button id="toggle4" type="button" class="toggle-button">Toggle open state</button>
+    <div class="echo-text">Menu button is currently <span id="openEcho4"></span></div>
+    <at-carbon-menu-button id="menuButton4" position="topLeft"></at-carbon-menu-button>    
+  </div>
+
+  <script>
+    document.addEventListener('WebComponentsReady', function() {
+      var items = [
+        { title: "Item 1", value: "item1", icon:"now:wrench" },
+        { title: "Item 2", value: "item2", icon:"now:wrench" },
+        { title: "Item 3", value: "item3", icon:"now:wrench" },
+        { title: "Item 4", value: "item4", icon:"now:wrench" },
+        { title: "Item 5", value: "item5", icon:"now:wrench" },
+        { title: "Item 6", value: "item6", icon:"now:wrench" },
+        { title: "Item 7", value: "item7", icon:"now:wrench" }
+      ]
+
+      function setOpenEchoText(menuButton, openEcho) {
+        if (menuButton.open) {
+          openEcho.textContent = "OPEN";
+        } else {
+          openEcho.textContent = "CLOSED";
+        }
+      }
+
+      function initializeWidget(
+        menuItems,
+        menuButtonSelector,
+        toggleButtonSelector,
+        openEchoSelector
+        ) {
+        var menuButton = document.getElementById(menuButtonSelector);
+        menuButton.items = items;
+
+        var toggle = document.getElementById(toggleButtonSelector);
+        var openEcho = document.getElementById(openEchoSelector); 
+
+        setOpenEchoText(menuButton, openEcho);
+        
+        toggle.addEventListener('click', function(event) {
+          menuButton.open = !menuButton.open;
+          setOpenEchoText(menuButton, openEcho);
+        });
+
+        menuButton.addEventListener('open-changed', function(event) {
+          setOpenEchoText(menuButton, openEcho);
+        });
+      }
+
+      initializeWidget(items, 'menuButton', 'toggle', 'openEcho')
+      initializeWidget(items, 'menuButton2', 'toggle2', 'openEcho2')
+      initializeWidget(items, 'menuButton3', 'toggle3', 'openEcho3')
+      initializeWidget(items, 'menuButton4', 'toggle4', 'openEcho4')
+
+    });
+
+  </script>
+</body>
+
+</html>

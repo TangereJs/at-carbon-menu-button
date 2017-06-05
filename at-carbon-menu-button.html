@@ -35,12 +35,14 @@
 
       .title-class {
         vertical-align: middle;        
+        overflow: hidden;
+        white-space: nowrap;
       }
     </style>
     <div class="relative-container">
       <div class="absolute-container">
         <at-carbon-icon-button id="trigger" disabled="[[disabled]]" class="trigger" icon="[[icon]]" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
-        <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}">
+        <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}" open="{{open}}">
           <at-carbon-menu id="carbonMenu" items="{{items}}" value="[[value]]" item-view="{{itemView}}"></at-carbon-menu>
         </at-core-dropdown>
       </div>
@@ -128,6 +130,12 @@
         disabled: {
           type: Boolean,
           value: false
+        },
+
+        open: {
+          type: Boolean,
+          value: false,
+          notify: true
         }
       },
 
