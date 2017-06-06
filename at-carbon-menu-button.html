@@ -206,6 +206,7 @@
 
         menu.addEventListener('value-changed', function(event) {
           dropdown.hide();
+          self.value = event.detail.value;
           // *ij* with value notify true, repeated clicks on the same menu item do not trigger value-changed
           // when value-changed is fired manually repeated clicks trigger value-changed as expected
           self.fire('value-changed', { value: event.detail.value }, { bubbles: false });
