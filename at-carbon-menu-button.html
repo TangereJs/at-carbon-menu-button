@@ -41,9 +41,9 @@
     </style>
     <div class="relative-container">
       <div class="absolute-container">
-        <at-carbon-icon-button id="trigger" disabled="[[disabled]]" class="trigger" icon="[[icon]]" on-tap="_trigger_onTap" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
+        <at-carbon-icon-button id="trigger" disabled="[[disabled]]" class="trigger" icon="[[icon]]" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
         <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}" open="{{open}}">
-          <at-carbon-menu id="carbonMenu" items="{{items}}" value="[[value]]" item-view="{{itemView}}"></at-carbon-menu>
+          <at-carbon-menu id="carbonMenu" items="{{items}}" value="{{value}}" item-view="{{itemView}}"></at-carbon-menu>
         </at-core-dropdown>
       </div>
     </div>
@@ -157,10 +157,6 @@
         ARROW_DOWN: 40,
         ENTER: 13,
         SPACE: 32
-      },
-
-      _trigger_onTap: function (event) {
-        this.$.carbonMenu._host_onTap(event);
       },
 
       _trigger_onKeydown: function (event) {
