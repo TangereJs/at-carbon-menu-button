@@ -29,6 +29,10 @@
         position: absolute;
       }
 
+      .item-container {
+        white-space: nowrap;
+      }
+
       .icon-class {
         padding: 0 12px 0 0;
       }
@@ -38,6 +42,7 @@
         overflow: hidden;
         white-space: nowrap;
       }
+
     </style>
     <div class="relative-container">
       <div class="absolute-container">
@@ -112,7 +117,7 @@
           type: String,
           xtype: 'code',
           mode: 'liquidmixed',
-          value: '<div><at-carbon-icon icon="{{icon}}" class="icon-class at-carbon-menu-button"></at-carbon-icon><span class="title-class at-carbon-menu-button">{{title}}</span></div>'
+          value: '<div class="item-container at-carbon-menu-button"><at-carbon-icon icon="{{icon}}" class="icon-class at-carbon-menu-button"></at-carbon-icon><span class="title-class at-carbon-menu-button">{{title}}</span></div>'
         },
         xOffset: {
           type: Number,
