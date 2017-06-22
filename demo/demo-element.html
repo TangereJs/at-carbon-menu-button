@@ -120,7 +120,7 @@
         var menu4 = this.$.menu4;
         var menu4Echo = this.$.menu4Echo;
         menu4.items = menuItems;
-        menu4.itemView = '<div class="title-class">&nbsp;{{title}}</div>';
+        menu4.itemView = '<div class="title-class at-carbon-menu-button">&nbsp;{{title}}</div>';
         menu4.addEventListener('value-changed', function(event) {
           menu4Echo.textContent = menu4.value;
         });
