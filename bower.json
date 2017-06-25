@@ -1,7 +1,7 @@
 {
   "name": "at-carbon-menu-button",
   "private": true,
-  "version": "1.0.0.2",
+  "version": "1.0.0.15",
   "dependencies": {
     "tangere": "TangereJs/tangere#master",
     "at-carbon-icon-button": "tangerejs/at-carbon-icon-button#master",

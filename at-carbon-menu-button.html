@@ -172,12 +172,14 @@
         var keyCode = event.which;
 
         switch (keyCode) {
+
           case this._keyCodes.TAB:
             if (dropdown.isOpen()){
               menu._select();
               dropdown.hide();
             }
             break;
+
           case keyCodes.ENTER:
           case keyCodes.SPACE:
             if (dropdown.isOpen()){
@@ -186,9 +188,11 @@
               dropdown.hide();
             }
             break;
+
           case this._keyCodes.ESC:
             dropdown.hide();
             break;
+
           default:
             menu._host_onKeydown(event);
             break;
@@ -212,9 +216,16 @@
         menu.addEventListener('value-changed', function(event) {
           dropdown.hide();
           self.value = event.detail.value;
+
+          var detail = { value: event.detail.value };
           // *ij* with value notify true, repeated clicks on the same menu item do not trigger value-changed
           // when value-changed is fired manually repeated clicks trigger value-changed as expected
-          self.fire('value-changed', { value: event.detail.value }, { bubbles: false });
+          self.fire('value-changed', detail, { bubbles: false });
+
+          // allow event handlers to update or reset value
+          if (this.value != detail.value) {
+            this.value = detail.value;            
+          }
         });
       }
     });
