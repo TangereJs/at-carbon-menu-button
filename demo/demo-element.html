@@ -1,10 +1,10 @@
 <link rel="import" href="../../tangere/tangere.html">
-<link rel="import" href="../../at-theme/at-theme.html">
+<link rel="import" href="../../at-core-style-classes/at-core-style-classes.html" />
 <link rel="import" href="../at-carbon-menu-button.html">
 
 <dom-module id="demo-element">
   <template>
-  <style media="screen">
+  <style include="at-core-style-classes">
     .menu-item {
       font-size: 16px;
       font-weight: 500;
@@ -16,7 +16,7 @@
     .menu-item.menu-item-selected {
       background-color: lightgray;
     }
- 
+
     at-carbon-menu-button {
       width: 32px;
       height: 32px;
@@ -27,28 +27,26 @@
       white-space: nowrap;
     }
   </style>
-  <div class="horizontal layout">
-    <h3>at-carbon-menu-button demo</h4>
-  </div>
-  <div class="horizontal layout">
-    <div class="flex">
+  <h3>at-carbon-menu-button demo</h4>
+  <div class="layout-horizontal">
+    <div class="layout-flex">
       <h4>This menu is positioned to the bottom left of the button</h4>
       <div id=menu1Echo></div>
       <at-carbon-menu-button id="menu1"></at-carbon-menu-button>
     </div>
-    <div class="flex">
+    <div class="layout-flex">
       <h4>This menu is positioned to the top right of the button</h4>
       <div id=menu2Echo></div>
       <at-carbon-menu-button id="menu2" position="topRight"></at-carbon-menu-button>
     </div>
   </div>
-  <div class="horizontal layout">
-    <div class="flex">
+  <div class="layout-horizontal">
+    <div class="layout-flex">
       <h4>This menu is positioned to the top left of the button</h4>
       <at-carbon-menu-button id="menu3" position="topLeft"></at-carbon-menu-button>
       <div id=menu3Echo></div>
     </div>
-    <div class="flex">
+    <div class="layout-flex">
       <h4>This menu is positioned to the bottom right of the button</h4>
       <at-carbon-menu-button id="menu4" position="bottomRight" icon="now:menu2" color="black" x-offset="-8"></at-carbon-menu-button>
       <div id=menu4Echo></div>
