@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>at-carbon-menu-button tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../at-carbon-menu-button.html">
+  <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html" />
+</head>
+
+<body>
+  <test-fixture id="initial">
+    <template>
+      <at-carbon-menu-button></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('uiinteraction tests', function() {
+
+      var items = [
+        {
+          title: 'Item 1',
+          value: 'v1'
+        },
+        {
+          title: 'Item 2',
+          value: 'v2'
+        },
+        {
+          title: 'Item 3',
+          value: 'v3'
+        },
+      ];
+
+      test('uiinteraction', function() {
+        var elt = fixture('initial');
+
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, "<div>{{title}}</div>");
+
+        // no items in UI
+        var itemElts = Polymer.dom(elt.root).querySelectorAll('at-core-view');
+        assert.equal(itemElts.length, 0);
+
+        // set items to non empty array
+        elt.items = items;
+        Polymer.dom.flush();
+
+        // items are set in UI
+        itemElts = Polymer.dom(elt.root).querySelectorAll('at-core-view');
+        assert.equal(itemElts.length, 3);
+
+        // set items to []
+        elt.items = [];
+        Polymer.dom.flush();
+
+        // no items in UI
+        itemElts = Polymer.dom(elt.root).querySelectorAll('at-core-view');
+        // we have <template> element
+        assert.equal(itemElts.length, 0);
+
+        // set items to non empty array
+        elt.items = items;
+        Polymer.dom.flush();
+
+        // set value to value from array
+        elt.value = "v2";
+
+        // confirm that item is selected
+        var selected = Polymer.dom(elt.root).querySelector('.selected');
+        assert.isNotNull(selected);
+        assert.equal(selected.value.value, 'v2');
+
+        // set value to value to empty
+        elt.value = "";
+
+        // confirm that item is not selected
+        selected = Polymer.dom(elt.root).querySelector('.selected');
+        assert.isNull(selected);
+
+        // set value to value from array
+        elt.value = "v2";
+        // confirm that item is selected
+        selected = Polymer.dom(elt.root).querySelector('.selected');
+        assert.isNotNull(selected);
+        assert.equal(selected.value.value, 'v2');
+
+        // set value to value to another from array
+        elt.value = "v3";
+        // confirm that new item is selected
+        selected = Polymer.dom(elt.root).querySelector('.selected');
+        assert.isNotNull(selected);
+        assert.equal(selected.value.value, 'v3');
+
+      });
+    });
+  </script>
+</body>
+
+</html>

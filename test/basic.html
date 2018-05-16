@@ -1,0 +1,2617 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>at-carbon-menu-button tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../at-carbon-menu-button.html">
+  <link rel="import" href="../../iron-test-helpers/iron-test-helpers.html" />
+</head>
+
+<body>
+  <test-fixture id="initial">
+    <template>
+      <at-carbon-menu-button></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      position fixtures 
+    -->
+  <test-fixture id="positionIsUndefined">
+    <template>
+      <at-carbon-menu-button position="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIsNull">
+    <template>
+      <at-carbon-menu-button position="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIsTrue">
+    <template>
+      <at-carbon-menu-button position="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIsFalse">
+    <template>
+      <at-carbon-menu-button position="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIs-42">
+    <template>
+      <at-carbon-menu-button position="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIs0">
+    <template>
+      <at-carbon-menu-button position="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIs42">
+    <template>
+      <at-carbon-menu-button position="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIsEmpty">
+    <template>
+      <at-carbon-menu-button position=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button position="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIs{}">
+    <template>
+      <at-carbon-menu-button position="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIs[]">
+    <template>
+      <at-carbon-menu-button position="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="positionIsFunction">
+    <template>
+      <at-carbon-menu-button position="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      icon fixtures 
+    -->
+  <test-fixture id="iconIsUndefined">
+    <template>
+      <at-carbon-menu-button icon="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIsNull">
+    <template>
+      <at-carbon-menu-button icon="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIsTrue">
+    <template>
+      <at-carbon-menu-button icon="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIsFalse">
+    <template>
+      <at-carbon-menu-button icon="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIs-42">
+    <template>
+      <at-carbon-menu-button icon="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIs0">
+    <template>
+      <at-carbon-menu-button icon="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIs42">
+    <template>
+      <at-carbon-menu-button icon="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIsEmpty">
+    <template>
+      <at-carbon-menu-button icon=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button icon="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIs{}">
+    <template>
+      <at-carbon-menu-button icon="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIs[]">
+    <template>
+      <at-carbon-menu-button icon="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="iconIsFunction">
+    <template>
+      <at-carbon-menu-button icon="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      items fixtures 
+    -->
+  <test-fixture id="itemsIsUndefined">
+    <template>
+      <at-carbon-menu-button items="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIsNull">
+    <template>
+      <at-carbon-menu-button items="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIsTrue">
+    <template>
+      <at-carbon-menu-button items="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIsFalse">
+    <template>
+      <at-carbon-menu-button items="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIs-42">
+    <template>
+      <at-carbon-menu-button items="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIs0">
+    <template>
+      <at-carbon-menu-button items="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIs42">
+    <template>
+      <at-carbon-menu-button items="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIsEmpty">
+    <template>
+      <at-carbon-menu-button items=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button items="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIs{}">
+    <template>
+      <at-carbon-menu-button items="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIs[]">
+    <template>
+      <at-carbon-menu-button items="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemsIsFunction">
+    <template>
+      <at-carbon-menu-button items="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      value fixtures 
+    -->
+  <test-fixture id="valueIsUndefined">
+    <template>
+      <at-carbon-menu-button value="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIsNull">
+    <template>
+      <at-carbon-menu-button value="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIsTrue">
+    <template>
+      <at-carbon-menu-button value="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIsFalse">
+    <template>
+      <at-carbon-menu-button value="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIs-42">
+    <template>
+      <at-carbon-menu-button value="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIs0">
+    <template>
+      <at-carbon-menu-button value="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIs42">
+    <template>
+      <at-carbon-menu-button value="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIsEmpty">
+    <template>
+      <at-carbon-menu-button value=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button value="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIs{}">
+    <template>
+      <at-carbon-menu-button value="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIs[]">
+    <template>
+      <at-carbon-menu-button value="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="valueIsFunction">
+    <template>
+      <at-carbon-menu-button value="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      itemView fixtures 
+    -->
+  <test-fixture id="itemViewIsUndefined">
+    <template>
+      <at-carbon-menu-button item-view="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIsNull">
+    <template>
+      <at-carbon-menu-button item-view="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIsTrue">
+    <template>
+      <at-carbon-menu-button item-view="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIsFalse">
+    <template>
+      <at-carbon-menu-button item-view="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIs-42">
+    <template>
+      <at-carbon-menu-button item-view="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIs0">
+    <template>
+      <at-carbon-menu-button item-view="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIs42">
+    <template>
+      <at-carbon-menu-button item-view="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIsEmpty">
+    <template>
+      <at-carbon-menu-button item-view=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button item-view="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIs{}">
+    <template>
+      <at-carbon-menu-button item-view="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIs[]">
+    <template>
+      <at-carbon-menu-button item-view="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="itemViewIsFunction">
+    <template>
+      <at-carbon-menu-button item-view="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      xOffset fixtures 
+    -->
+  <test-fixture id="xOffsetIsUndefined">
+    <template>
+      <at-carbon-menu-button x-offset="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIsNull">
+    <template>
+      <at-carbon-menu-button x-offset="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIsTrue">
+    <template>
+      <at-carbon-menu-button x-offset="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIsFalse">
+    <template>
+      <at-carbon-menu-button x-offset="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIs-42">
+    <template>
+      <at-carbon-menu-button x-offset="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIs0">
+    <template>
+      <at-carbon-menu-button x-offset="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIs42">
+    <template>
+      <at-carbon-menu-button x-offset="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIsEmpty">
+    <template>
+      <at-carbon-menu-button x-offset=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button x-offset="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIs{}">
+    <template>
+      <at-carbon-menu-button x-offset="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIs[]">
+    <template>
+      <at-carbon-menu-button x-offset="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="xOffsetIsFunction">
+    <template>
+      <at-carbon-menu-button x-offset="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      yOffset fixtures 
+    -->
+  <test-fixture id="yOffsetIsUndefined">
+    <template>
+      <at-carbon-menu-button y-offset="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIsNull">
+    <template>
+      <at-carbon-menu-button y-offset="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIsTrue">
+    <template>
+      <at-carbon-menu-button y-offset="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIsFalse">
+    <template>
+      <at-carbon-menu-button y-offset="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIs-42">
+    <template>
+      <at-carbon-menu-button y-offset="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIs0">
+    <template>
+      <at-carbon-menu-button y-offset="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIs42">
+    <template>
+      <at-carbon-menu-button y-offset="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIsEmpty">
+    <template>
+      <at-carbon-menu-button y-offset=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button y-offset="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIs{}">
+    <template>
+      <at-carbon-menu-button y-offset="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIs[]">
+    <template>
+      <at-carbon-menu-button y-offset="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="yOffsetIsFunction">
+    <template>
+      <at-carbon-menu-button y-offset="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      color fixtures 
+    -->
+  <test-fixture id="colorIsUndefined">
+    <template>
+      <at-carbon-menu-button color="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIsNull">
+    <template>
+      <at-carbon-menu-button color="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIsTrue">
+    <template>
+      <at-carbon-menu-button color="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIsFalse">
+    <template>
+      <at-carbon-menu-button color="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIs-42">
+    <template>
+      <at-carbon-menu-button color="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIs0">
+    <template>
+      <at-carbon-menu-button color="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIs42">
+    <template>
+      <at-carbon-menu-button color="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIsEmpty">
+    <template>
+      <at-carbon-menu-button color=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button color="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIs{}">
+    <template>
+      <at-carbon-menu-button color="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIs[]">
+    <template>
+      <at-carbon-menu-button color="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="colorIsFunction">
+    <template>
+      <at-carbon-menu-button color="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      disabled fixtures 
+    -->
+  <test-fixture id="disabledIsUndefined">
+    <template>
+      <at-carbon-menu-button disabled="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIsNull">
+    <template>
+      <at-carbon-menu-button disabled="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIsTrue">
+    <template>
+      <at-carbon-menu-button disabled="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIsFalse">
+    <template>
+      <at-carbon-menu-button disabled="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIs-42">
+    <template>
+      <at-carbon-menu-button disabled="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIs0">
+    <template>
+      <at-carbon-menu-button disabled="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIs42">
+    <template>
+      <at-carbon-menu-button disabled="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIsEmpty">
+    <template>
+      <at-carbon-menu-button disabled=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button disabled="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIs{}">
+    <template>
+      <at-carbon-menu-button disabled="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIs[]">
+    <template>
+      <at-carbon-menu-button disabled="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="disabledIsFunction">
+    <template>
+      <at-carbon-menu-button disabled="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <!-- 
+      open fixtures 
+    -->
+  <test-fixture id="openIsUndefined">
+    <template>
+      <at-carbon-menu-button open="undefined"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIsNull">
+    <template>
+      <at-carbon-menu-button open="null"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIsTrue">
+    <template>
+      <at-carbon-menu-button open="true"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIsFalse">
+    <template>
+      <at-carbon-menu-button open="false"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIs-42">
+    <template>
+      <at-carbon-menu-button open="-42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIs0">
+    <template>
+      <at-carbon-menu-button open="0"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIs42">
+    <template>
+      <at-carbon-menu-button open="42"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIsEmpty">
+    <template>
+      <at-carbon-menu-button open=""></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIsLorem_ipsum">
+    <template>
+      <at-carbon-menu-button open="lorem ipsum"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIs{}">
+    <template>
+      <at-carbon-menu-button open="{}"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIs[]">
+    <template>
+      <at-carbon-menu-button open="[]"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+  <test-fixture id="openIsFunction">
+    <template>
+      <at-carbon-menu-button open="function f() { return undefined; }"></at-carbon-menu-button>
+    </template>
+  </test-fixture>
+
+  <script>
+    var defaultItemView = '<div class="item-container at-carbon-menu-button"><at-carbon-icon icon="{{icon}}" class="icon-class at-carbon-menu-button"></at-carbon-icon><span class="title-class at-carbon-menu-button">{{title}}</span></div>';
+
+    suite('initial value tests', function() {
+      test('initial value', function() {
+        var elt = fixture('initial');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // position attribute tests
+    // 
+    suite("position attribute tests", function() {
+      test('position is undefined', function() {
+        var elt = fixture('positionIsUndefined');
+
+        assert.equal(elt.position, "undefined");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is null', function() {
+        var elt = fixture('positionIsNull');
+
+        assert.equal(elt.position, "null");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is true', function() {
+        var elt = fixture('positionIsTrue');
+
+        assert.equal(elt.position, "true");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is false', function() {
+        var elt = fixture('positionIsFalse');
+
+        assert.equal(elt.position, "false");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is -42', function() {
+        var elt = fixture('positionIs-42');
+
+        assert.equal(elt.position, "-42");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is 0', function() {
+        var elt = fixture('positionIs0');
+
+        assert.equal(elt.position, "0");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is 42', function() {
+        var elt = fixture('positionIs42');
+
+        assert.equal(elt.position, "42");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is empty', function() {
+        var elt = fixture('positionIsEmpty');
+
+        assert.equal(elt.position, "");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is lorem ipsum', function() {
+        var elt = fixture('positionIsLorem_ipsum');
+
+        assert.equal(elt.position, "lorem ipsum");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is {}', function() {
+        var elt = fixture('positionIs{}');
+
+        assert.equal(elt.position, "{}");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is []', function() {
+        var elt = fixture('positionIs[]');
+
+        assert.equal(elt.position, "[]");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('position is function', function() {
+        var elt = fixture('positionIsFunction');
+
+        assert.equal(elt.position, "function f() { return undefined; }");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // icon attribute tests
+    // 
+    suite("icon attribute tests", function() {
+      test('icon is undefined', function() {
+        var elt = fixture('iconIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "undefined");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is null', function() {
+        var elt = fixture('iconIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "null");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is true', function() {
+        var elt = fixture('iconIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "true");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is false', function() {
+        var elt = fixture('iconIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "false");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is -42', function() {
+        var elt = fixture('iconIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "-42");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is 0', function() {
+        var elt = fixture('iconIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "0");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is 42', function() {
+        var elt = fixture('iconIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "42");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is empty', function() {
+        var elt = fixture('iconIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is lorem ipsum', function() {
+        var elt = fixture('iconIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "lorem ipsum");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is {}', function() {
+        var elt = fixture('iconIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "{}");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is []', function() {
+        var elt = fixture('iconIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "[]");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('icon is function', function() {
+        var elt = fixture('iconIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "function f() { return undefined; }");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // items attribute tests
+    // 
+    suite("items attribute tests", function() {
+      test('items is undefined', function() {
+        var elt = fixture('itemsIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, null);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is null', function() {
+        var elt = fixture('itemsIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, null);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is true', function() {
+        var elt = fixture('itemsIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, true);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is false', function() {
+        var elt = fixture('itemsIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, false);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is -42', function() {
+        var elt = fixture('itemsIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, -42);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is 0', function() {
+        var elt = fixture('itemsIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, 0);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is 42', function() {
+        var elt = fixture('itemsIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, 42);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is empty', function() {
+        var elt = fixture('itemsIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, null);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is lorem ipsum', function() {
+        var elt = fixture('itemsIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, null);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is {}', function() {
+        var elt = fixture('itemsIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, {});
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is []', function() {
+        var elt = fixture('itemsIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('items is function', function() {
+        var elt = fixture('itemsIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, null);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // value attribute tests
+    // 
+    suite("value attribute tests", function() {
+      test('value is undefined', function() {
+        var elt = fixture('valueIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "undefined");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is null', function() {
+        var elt = fixture('valueIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "null");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is true', function() {
+        var elt = fixture('valueIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "true");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is false', function() {
+        var elt = fixture('valueIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "false");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is -42', function() {
+        var elt = fixture('valueIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "-42");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is 0', function() {
+        var elt = fixture('valueIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "0");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is 42', function() {
+        var elt = fixture('valueIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "42");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is empty', function() {
+        var elt = fixture('valueIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is lorem ipsum', function() {
+        var elt = fixture('valueIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "lorem ipsum");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is {}', function() {
+        var elt = fixture('valueIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "{}");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is []', function() {
+        var elt = fixture('valueIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "[]");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('value is function', function() {
+        var elt = fixture('valueIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, "function f() { return undefined; }");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // itemView attribute tests
+    // 
+    suite("itemView attribute tests", function() {
+      test('itemView is undefined', function() {
+        var elt = fixture('itemViewIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "undefined");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is null', function() {
+        var elt = fixture('itemViewIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "null");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is true', function() {
+        var elt = fixture('itemViewIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "true");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is false', function() {
+        var elt = fixture('itemViewIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "false");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is -42', function() {
+        var elt = fixture('itemViewIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "-42");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is 0', function() {
+        var elt = fixture('itemViewIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "0");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is 42', function() {
+        var elt = fixture('itemViewIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "42");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is empty', function() {
+        var elt = fixture('itemViewIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is lorem ipsum', function() {
+        var elt = fixture('itemViewIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "lorem ipsum");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is {}', function() {
+        var elt = fixture('itemViewIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "{}");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is []', function() {
+        var elt = fixture('itemViewIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "[]");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('itemView is function', function() {
+        var elt = fixture('itemViewIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, "function f() { return undefined; }");
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // xOffset attribute tests
+    // 
+    suite("xOffset attribute tests", function() {
+      test('xOffset is undefined', function() {
+        var elt = fixture('xOffsetIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.isNaN(elt.xOffset);
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is null', function() {
+        var elt = fixture('xOffsetIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.isNaN(elt.xOffset);
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is true', function() {
+        var elt = fixture('xOffsetIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.isNaN(elt.xOffset);
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is false', function() {
+        var elt = fixture('xOffsetIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.isNaN(elt.xOffset);
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is -42', function() {
+        var elt = fixture('xOffsetIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "-42");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is 0', function() {
+        var elt = fixture('xOffsetIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "0");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is 42', function() {
+        var elt = fixture('xOffsetIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "42");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is empty', function() {
+        var elt = fixture('xOffsetIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, '');
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is lorem ipsum', function() {
+        var elt = fixture('xOffsetIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.isNaN(elt.xOffset);
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is {}', function() {
+        var elt = fixture('xOffsetIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.isNaN(elt.xOffset);
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is []', function() {
+        var elt = fixture('xOffsetIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.isNaN(elt.xOffset);
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('xOffset is function', function() {
+        var elt = fixture('xOffsetIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.isNaN(elt.xOffset);
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // yOffset attribute tests
+    // 
+    suite("yOffset attribute tests", function() {
+      test('yOffset is undefined', function() {
+        var elt = fixture('yOffsetIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.isNaN(elt.yOffset);
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is null', function() {
+        var elt = fixture('yOffsetIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.isNaN(elt.yOffset);
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is true', function() {
+        var elt = fixture('yOffsetIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.isNaN(elt.yOffset);
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is false', function() {
+        var elt = fixture('yOffsetIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.isNaN(elt.yOffset);
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is -42', function() {
+        var elt = fixture('yOffsetIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "-42");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is 0', function() {
+        var elt = fixture('yOffsetIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "0");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is 42', function() {
+        var elt = fixture('yOffsetIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "42");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is empty', function() {
+        var elt = fixture('yOffsetIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, '');
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is lorem ipsum', function() {
+        var elt = fixture('yOffsetIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.isNaN(elt.yOffset);
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is {}', function() {
+        var elt = fixture('yOffsetIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.isNaN(elt.yOffset);
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is []', function() {
+        var elt = fixture('yOffsetIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.isNaN(elt.yOffset);
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('yOffset is function', function() {
+        var elt = fixture('yOffsetIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.isNaN(elt.yOffset);
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // color attribute tests
+    // 
+    suite("color attribute tests", function() {
+      test('color is undefined', function() {
+        var elt = fixture('colorIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "undefined");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is null', function() {
+        var elt = fixture('colorIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "null");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is true', function() {
+        var elt = fixture('colorIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "true");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is false', function() {
+        var elt = fixture('colorIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "false");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is -42', function() {
+        var elt = fixture('colorIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "-42");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is 0', function() {
+        var elt = fixture('colorIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "0");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is 42', function() {
+        var elt = fixture('colorIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "42");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is empty', function() {
+        var elt = fixture('colorIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is lorem ipsum', function() {
+        var elt = fixture('colorIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "lorem ipsum");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is {}', function() {
+        var elt = fixture('colorIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "{}");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is []', function() {
+        var elt = fixture('colorIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "[]");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+
+      test('color is function', function() {
+        var elt = fixture('colorIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "function f() { return undefined; }");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // disabled attribute tests
+    // 
+    suite("disabled attribute tests", function() {
+      test('disabled is undefined', function() {
+        var elt = fixture('disabledIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is null', function() {
+        var elt = fixture('disabledIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is true', function() {
+        var elt = fixture('disabledIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is false', function() {
+        var elt = fixture('disabledIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is -42', function() {
+        var elt = fixture('disabledIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is 0', function() {
+        var elt = fixture('disabledIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is 42', function() {
+        var elt = fixture('disabledIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is empty', function() {
+        var elt = fixture('disabledIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is lorem ipsum', function() {
+        var elt = fixture('disabledIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is {}', function() {
+        var elt = fixture('disabledIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is []', function() {
+        var elt = fixture('disabledIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+
+      test('disabled is function', function() {
+        var elt = fixture('disabledIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, true);
+        assert.equal(elt.open, false);
+      });
+    });
+
+    // 
+    // open attribute tests
+    // 
+    suite("open attribute tests", function() {
+      test('open is undefined', function() {
+        var elt = fixture('openIsUndefined');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is null', function() {
+        var elt = fixture('openIsNull');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is true', function() {
+        var elt = fixture('openIsTrue');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is false', function() {
+        var elt = fixture('openIsFalse');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is -42', function() {
+        var elt = fixture('openIs-42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is 0', function() {
+        var elt = fixture('openIs0');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is 42', function() {
+        var elt = fixture('openIs42');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is empty', function() {
+        var elt = fixture('openIsEmpty');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is lorem ipsum', function() {
+        var elt = fixture('openIsLorem_ipsum');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is {}', function() {
+        var elt = fixture('openIs{}');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is []', function() {
+        var elt = fixture('openIs[]');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+
+      test('open is function', function() {
+        var elt = fixture('openIsFunction');
+
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
+        assert.deepEqual(elt.items, []);
+        assert.equal(elt.value, '');
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, "");
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, true);
+      });
+    });
+
+    // 
+    // 
+    // 
+    // TODO Update from here!!!
+    // 
+    // 
+    // 
+
+    suite("tests where properties are set as in code", function() {
+
+      test('invalid items values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.items = actValue;
+          assert.deepEqual(elt.items, expValue);
+          assert.deepEqual(elt.value, "");
+          assert.deepEqual(elt.itemView, defaultItemView);
+        }
+      });
+
+      test('invalid value values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.value = actValue;
+          assert.deepEqual(elt.items, []);
+          assert.deepEqual(elt.value, expValue);
+          assert.deepEqual(elt.itemView, defaultItemView);
+        }
+      });
+
+      test('invalid itemView values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.itemView = actValue;
+          assert.deepEqual(elt.items, []);
+          assert.deepEqual(elt.value, "");
+          assert.deepEqual(elt.itemView, expValue);
+        }
+      });
+
+    });
+  </script>
+</body>
+
+</html>
