@@ -2526,17 +2526,71 @@
         assert.equal(elt.disabled, false);
         assert.equal(elt.open, true);
       });
-    });
-
-    // 
-    // 
-    // 
-    // TODO Update from here!!!
-    // 
-    // 
-    // 
+    })
 
     suite("tests where properties are set as in code", function() {
+
+      test('invalid position values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.position = actValue;
+          assert.deepEqual(elt.position, expValue);
+          assert.equal(elt.icon, "now:menu");
+          assert.deepEqual(elt.items, []);
+          assert.equal(elt.value, "");
+          assert.equal(elt.itemView, defaultItemView);
+          assert.equal(elt.xOffset, "");
+          assert.equal(elt.yOffset, "");
+          assert.equal(elt.color, '');
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.open, false);
+        }
+      });
+
+      test('invalid icon values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.icon = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.deepEqual(elt.icon, expValue);
+          assert.deepEqual(elt.items, []);
+          assert.equal(elt.value, "");
+          assert.equal(elt.itemView, defaultItemView);
+          assert.equal(elt.xOffset, "");
+          assert.equal(elt.yOffset, "");
+          assert.equal(elt.color, '');
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.open, false);
+        }
+      });
 
       test('invalid items values', function() {
         var elt = fixture('initial');
@@ -2556,9 +2610,16 @@
           var expValue = expValues[i];
 
           elt.items = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.equal(elt.icon, "now:menu");
           assert.deepEqual(elt.items, expValue);
-          assert.deepEqual(elt.value, "");
-          assert.deepEqual(elt.itemView, defaultItemView);
+          assert.equal(elt.value, "");
+          assert.equal(elt.itemView, defaultItemView);
+          assert.equal(elt.xOffset, "");
+          assert.equal(elt.yOffset, "");
+          assert.equal(elt.color, '');
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.open, false);
         }
       });
 
@@ -2580,9 +2641,16 @@
           var expValue = expValues[i];
 
           elt.value = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.equal(elt.icon, "now:menu");
           assert.deepEqual(elt.items, []);
           assert.deepEqual(elt.value, expValue);
-          assert.deepEqual(elt.itemView, defaultItemView);
+          assert.equal(elt.itemView, defaultItemView);
+          assert.equal(elt.xOffset, "");
+          assert.equal(elt.yOffset, "");
+          assert.equal(elt.color, '');
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.open, false);
         }
       });
 
@@ -2604,9 +2672,171 @@
           var expValue = expValues[i];
 
           elt.itemView = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.equal(elt.icon, "now:menu");
           assert.deepEqual(elt.items, []);
-          assert.deepEqual(elt.value, "");
+          assert.equal(elt.value, "");
           assert.deepEqual(elt.itemView, expValue);
+          assert.equal(elt.xOffset, "");
+          assert.equal(elt.yOffset, "");
+          assert.equal(elt.color, '');
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.open, false);
+        }
+      });
+
+      test('invalid xOffset values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.xOffset = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.equal(elt.icon, "now:menu");
+          assert.deepEqual(elt.items, []);
+          assert.equal(elt.value, "");
+          assert.equal(elt.itemView, defaultItemView);
+          assert.deepEqual(elt.xOffset, expValue);
+          assert.equal(elt.yOffset, "");
+          assert.equal(elt.color, '');
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.open, false);
+        }
+      });
+
+      test('invalid yOffset values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.yOffset = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.equal(elt.icon, "now:menu");
+          assert.deepEqual(elt.items, []);
+          assert.equal(elt.value, "");
+          assert.equal(elt.itemView, defaultItemView);
+          assert.equal(elt.xOffset, "");
+          assert.deepEqual(elt.yOffset, expValue);
+          assert.equal(elt.color, '');
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.open, false);
+        }
+      });
+
+      test('invalid color values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.color = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.equal(elt.icon, "now:menu");
+          assert.deepEqual(elt.items, []);
+          assert.equal(elt.value, "");
+          assert.equal(elt.itemView, defaultItemView);
+          assert.equal(elt.xOffset, "");
+          assert.equal(elt.yOffset, "");
+          assert.deepEqual(elt.color, expValue);
+          assert.equal(elt.disabled, false);
+          assert.equal(elt.open, false);
+        }
+      });
+
+      test('invalid disabled values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.disabled = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.equal(elt.icon, "now:menu");
+          assert.deepEqual(elt.items, []);
+          assert.equal(elt.value, "");
+          assert.equal(elt.itemView, defaultItemView);
+          assert.equal(elt.xOffset, "");
+          assert.equal(elt.yOffset, "");
+          assert.equal(elt.color, '');
+          assert.deepEqual(elt.disabled, expValue);
+          assert.equal(elt.open, false);
+        }
+      });
+
+      test('invalid open values', function() {
+        var elt = fixture('initial');
+
+        var actValues = [
+          "undefined", "null", "true", "false", "-42", "0", "42", "", "lorem ipsum", "{}", "[]", "function f() { return undefined; }",
+          undefined, null, true, false, -42, 0, 42, {}, []
+        ];
+
+        var expValues = [
+          true, "null", "true", "false", "-42", "0", "42", false, true, "{}", "[]", "function f() { return undefined; }",
+          false, false, true, false, true, false, true, {}, []
+        ];
+
+        for (var i = 0; i < actValues.length; i++) {
+          var actValue = actValues[i];
+          var expValue = expValues[i];
+
+          elt.open = actValue;
+          assert.equal(elt.position, "bottomLeft");
+          assert.equal(elt.icon, "now:menu");
+          assert.deepEqual(elt.items, []);
+          assert.equal(elt.value, "");
+          assert.equal(elt.itemView, defaultItemView);
+          assert.equal(elt.xOffset, "");
+          assert.equal(elt.yOffset, "");
+          assert.equal(elt.color, '');
+          assert.equal(elt.disabled, false);
+          assert.deepEqual(elt.open, expValue);
         }
       });
 
