@@ -19,8 +19,9 @@
   </test-fixture>
 
   <script>
-    suite('uiinteraction tests', function() {
+    var defaultItemView = '<div class="item-container at-carbon-menu-button"><at-carbon-icon icon="{{icon}}" class="icon-class at-carbon-menu-button"></at-carbon-icon><span class="title-class at-carbon-menu-button">{{title}}</span></div>';
 
+    suite('uiinteraction tests', function() {
       var items = [
         {
           title: 'Item 1',
@@ -39,63 +40,96 @@
       test('uiinteraction', function() {
         var elt = fixture('initial');
 
+        assert.equal(elt.position, "bottomLeft");
+        assert.equal(elt.icon, "now:menu");
         assert.deepEqual(elt.items, []);
         assert.equal(elt.value, "");
-        assert.equal(elt.itemView, "<div>{{title}}</div>");
+        assert.equal(elt.itemView, defaultItemView);
+        assert.equal(elt.xOffset, "");
+        assert.equal(elt.yOffset, "");
+        assert.equal(elt.color, '');
+        assert.equal(elt.disabled, false);
+        assert.equal(elt.open, false);
 
-        // no items in UI
-        var itemElts = Polymer.dom(elt.root).querySelectorAll('at-core-view');
-        assert.equal(itemElts.length, 0);
 
-        // set items to non empty array
+        var iconButton = elt.$.trigger;
+        // setting any of color icon and disabled transfers to internal at-carbon-icon-button
+        elt.color = "red";
+        assert.equal(iconButton.color, "red");
+
+        elt.color = "";
+        assert.equal(iconButton.color, "");
+
+        elt.icon = "now:lorem";
+        assert.equal(iconButton.icon, "now:lorem");
+
+        elt.icon = "now:menu";
+        assert.equal(iconButton.icon, "now:menu");
+
+        elt.disabled = true;
+        assert.equal(iconButton.disabled, true);
+
+        elt.disabled = false;
+        assert.equal(iconButton.disabled, false);
+
+        // setting any of position, xOffset and yOffset transfers to internal at-core-dropdown
+        var dropdown = elt.$.dropdown;
+        elt.position = "bottomRight";
+        assert.equal(dropdown.position, "bottomRight");
+
+        elt.position = "topRight";
+        assert.equal(dropdown.position, "topRight");
+
+        elt.position = "topLeft";
+        assert.equal(dropdown.position, "topLeft");
+
+        elt.position = "bottomLeft";
+        assert.equal(dropdown.position, "bottomLeft");
+
+        elt.xOffset = 10;
+        assert.equal(dropdown.xOffset, 10);
+
+        elt.xOffset = -10;
+        assert.equal(dropdown.xOffset, -10);
+
+        elt.xOffset = 0;
+        assert.equal(dropdown.xOffset, 0);
+
+        elt.yOffset = 10;
+        assert.equal(dropdown.yOffset, 10);
+
+        elt.yOffset = -10;
+        assert.equal(dropdown.yOffset, -10);
+
+        elt.yOffset = 0;
+        assert.equal(dropdown.yOffset, 0);
+
+        var items = [
+          { title: "T1", value: "v1", icon: "now:icon1" },
+          { title: "T2", value: "v2", icon: "now:icon2" },
+          { title: "T3", value: "v3", icon: "now:icon3" }
+        ];
+        // setting any of items, value and itemView transfers to internal at-carbon-menu
+        var menu = elt.$.carbonMenu;
+
         elt.items = items;
-        Polymer.dom.flush();
+        assert.deepEqual(menu.items, items);
 
-        // items are set in UI
-        itemElts = Polymer.dom(elt.root).querySelectorAll('at-core-view');
-        assert.equal(itemElts.length, 3);
-
-        // set items to []
         elt.items = [];
-        Polymer.dom.flush();
+        assert.deepEqual(menu.items, []);
 
-        // no items in UI
-        itemElts = Polymer.dom(elt.root).querySelectorAll('at-core-view');
-        // we have <template> element
-        assert.equal(itemElts.length, 0);
-
-        // set items to non empty array
-        elt.items = items;
-        Polymer.dom.flush();
-
-        // set value to value from array
         elt.value = "v2";
+        assert.deepEqual(menu.value, "v2");
 
-        // confirm that item is selected
-        var selected = Polymer.dom(elt.root).querySelector('.selected');
-        assert.isNotNull(selected);
-        assert.equal(selected.value.value, 'v2');
-
-        // set value to value to empty
         elt.value = "";
+        assert.deepEqual(menu.value, "");
 
-        // confirm that item is not selected
-        selected = Polymer.dom(elt.root).querySelector('.selected');
-        assert.isNull(selected);
+        var nextView = "<div>{{title}}</div>";
+        elt.itemView = nextView;
+        assert.equal(menu.itemView, nextView);
 
-        // set value to value from array
-        elt.value = "v2";
-        // confirm that item is selected
-        selected = Polymer.dom(elt.root).querySelector('.selected');
-        assert.isNotNull(selected);
-        assert.equal(selected.value.value, 'v2');
-
-        // set value to value to another from array
-        elt.value = "v3";
-        // confirm that new item is selected
-        selected = Polymer.dom(elt.root).querySelector('.selected');
-        assert.isNotNull(selected);
-        assert.equal(selected.value.value, 'v3');
+        elt.itemView = "";
+        assert.equal(menu.itemView, "");
 
       });
     });
