@@ -141,6 +141,7 @@
         open: {
           type: Boolean,
           value: false,
+          observer: '_openChanged',
           notify: true
         }
       },
@@ -228,6 +229,13 @@
             this.value = detail.value;            
           }
         });
+      },
+
+      _openChanged: function(newValue, oldValue) {
+        var trigger = this.$.trigger;
+        var dropdown = this.$.dropdown;
+
+        dropdown.updateDropdownPosition(trigger);
       }
     });
   </script>
