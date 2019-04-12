@@ -51,7 +51,7 @@
     </style>
     <div class="relative-container">
       <div class="absolute-container">
-        <at-carbon-icon-button id="trigger" disabled="[[disabled]]" class="trigger" icon="[[icon]]" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
+        <at-carbon-icon-button id="trigger" badge-label="[[badgeLabel]" badge-color="[[badgeColor]]" disabled="[[disabled]]" class="trigger" icon="[[icon]]" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
         <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}" open="{{open}}">
           <at-carbon-menu id="carbonMenu" items="{{items}}" value="{{value}}" item-view="{{itemView}}"></at-carbon-menu>
         </at-core-dropdown>
@@ -147,6 +147,16 @@
           value: false,
           observer: '_openChanged',
           notify: true
+        },
+
+        badgeLabel: {
+          type: String,
+          value: ''
+        },
+
+        badgeColor: {
+          type: String,
+          value: ''
         }
       },
 
