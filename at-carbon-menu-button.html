@@ -2,6 +2,7 @@
 <link rel="import" href="../at-carbon-icon-button/at-carbon-icon-button.html">
 <link rel="import" href="../at-carbon-menu/at-carbon-menu.html">
 <link rel="import" href="../at-core-dropdown/at-core-dropdown.html">
+<link rel="import" href="../at-core-bottom-sheet/at-core-bottom-sheet.html">
 
 <dom-module id="at-carbon-menu-button">
   <template>
@@ -47,14 +48,15 @@
         overflow: hidden;
         white-space: nowrap;
       }
-
+      
     </style>
     <div class="relative-container">
       <div class="absolute-container">
-        <at-carbon-icon-button id="trigger" badge-label="[[badgeLabel]" badge-color="[[badgeColor]]" disabled="[[disabled]]" class="trigger" icon="[[icon]]" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
-        <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}" open="{{open}}" arrow>
-          <at-carbon-menu id="carbonMenu" items="{{items}}" value="{{value}}" item-view="{{itemView}}"></at-carbon-menu>
+        <at-carbon-icon-button id="trigger" badge-label="[[badgeLabel]" badge-color="[[badgeColor]]" disabled="[[disabled]]" class="trigger" icon="[[icon]]" on-tap="_handleIconTap" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
+        <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}" on-open-changed="_handleDropdownOpenChanged" arrow>
+          <at-carbon-menu id="carbonMenu" items="{{items}}" value="{{value}}" item-view="{{itemView}}" on-value-changed="_handleMenuValueChanged"></at-carbon-menu>
         </at-core-dropdown>
+        <at-core-bottom-sheet id="bottomSheet" items="{{items}}" value="{{value}}" item-view="{{itemView}}" on-value-changed="_handleBottomSheetValueChanged" on-open-changed="_handleBottomSheetOpenChanged"></at-core-bottom-sheet>
       </div>
     </div>
   </template>
@@ -157,7 +159,24 @@
         badgeColor: {
           type: String,
           value: ''
-        }
+        },
+
+        renderMode: {
+          type: String,
+          value: '0',
+          observer: '_renderModeChanged',
+          xtype: "enum",
+          xvaluelist: [{
+            title: "default",
+            value: "0"
+          }, {
+            title: "desktop",
+            value: "1"
+          }, {
+            title: "mobile",
+            value: "2"
+          }],
+        },
       },
 
       /********************************************************************************/
@@ -215,42 +234,111 @@
         }
       },
 
-      ready: function() {
-        var trigger = this.$.trigger;
-        var dropdown = this.$.dropdown;
-        var menu = this.$.carbonMenu;
-        var self = this;
-
-        trigger.addEventListener('tap', function(event) {
-          if (self._enterSpaceGuard) {
-            self._enterSpaceGuard = false;
-            return ;
-          }
-          dropdown.toggle(trigger, event);
-        });
-
-        menu.addEventListener('value-changed', function(event) {
-          dropdown.hide();
-          self.value = event.detail.value;
-
-          var detail = { value: event.detail.value };
-          // *ij* with value notify true, repeated clicks on the same menu item do not trigger value-changed
-          // when value-changed is fired manually repeated clicks trigger value-changed as expected
-          self.fire('value-changed', detail, { bubbles: false });
-
-          // allow event handlers to update or reset value
-          if (this.value != detail.value) {
-            this.value = detail.value;            
-          }
-        });
+      ready: function() { 
+        
       },
 
       _openChanged: function(newValue, oldValue) {
         var trigger = this.$.trigger;
         var dropdown = this.$.dropdown;
+        var bottomSheet = this.$.bottomSheet;
 
-        dropdown.updateDropdownPosition(trigger);
+        if(newValue == true) {
+          if(this.renderMode == '1') {
+            dropdown.open = true;
+            dropdown.updateDropdownPosition(trigger);
+          }
+
+          if(this.renderMode == '2') {
+            bottomSheet.open = true;
+          }
+
+          if(this.renderMode == '0') {
+            if(Tangere.session.browser.mobile == false) {
+              dropdown.open = true;
+              dropdown.updateDropdownPosition(trigger);
+            } else {
+              bottomSheet.open = true;
+            }
+          }
+
+        } else {
+          dropdown.open = false;
+          bottomSheet.open = false;
+        }
+      },
+
+      _renderModeChanged: function (newValue, oldValue) {
+        var dropdown = this.$.dropdown;
+        var bottomSheet = this.$.bottomSheet;
+
+        // default - if mobile == true -> behave like mobile, otherwise -> behave like desktop
+        if (newValue == '0') {
+          if(Tangere.session.browser.mobile == true) {
+            newValue = 2;
+          } else {
+            newValue = 1;
+          }
+        }
+
+        // desktop render mode
+        if (newValue == '1') {
+          if(this.open == true) {
+            dropdown.open = true;
+            dropdown.updateDropdownPosition(this.$.trigger);
+          }
+
+          if(this.open == false) dropdown.open = false;
+        }
+
+        // mobile render mode
+        if (newValue == '2') {
+          if(this.open == true) bottomSheet.open = true;
+          if(this.open == false) bottomSheet.open = false;
+        }
+      },
+
+      _handleDropdownOpenChanged: function(event) {
+        if(this.open == event.detail.value) return;
+        this.open = event.detail.value;
+      },
+
+      _handleBottomSheetOpenChanged: function(event) {
+        if(this.open == event.detail.value) return;
+        this.open = event.detail.value;
+      },
+
+      _handleIconTap: function (event) {
+        if (this._enterSpaceGuard) {
+          this._enterSpaceGuard = false;
+          return;
+        }
+
+        if (this.open == true) {
+          this.open = false;
+        } else {
+          this.open = true;
+        }
+      },
+
+      _handleMenuValueChanged: function (event) {
+        this.open = false;
+
+        if (this.value != detail.value) this.value = detail.value;
+
+        var detail = { value: event.detail.value };
+        this.fire('value-changed', detail, { bubbles: false });
+      },
+
+      _handleBottomSheetValueChanged: function(event) {
+        this.open = false;
+
+        if(this.value != detail.value) this.value = detail.value;
+
+        var detail = { value: event.detail.value };
+        this.fire('value-changed', detail, { bubbles: false});
       }
+
     });
   </script>
 </dom-module>
