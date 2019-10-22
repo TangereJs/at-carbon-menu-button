@@ -324,7 +324,7 @@
       _handleMenuValueChanged: function (event) {
         this.open = false;
 
-        if (this.value != detail.value) this.value = detail.value;
+        if (this.value != event.detail.value) this.value = event.detail.value;
 
         var detail = { value: event.detail.value };
         this.fire('value-changed', detail, { bubbles: false });
@@ -333,7 +333,7 @@
       _handleBottomSheetValueChanged: function(event) {
         this.open = false;
 
-        if(this.value != detail.value) this.value = detail.value;
+        if(this.value != event.detail.value) this.value = event.detail.value;
 
         var detail = { value: event.detail.value };
         this.fire('value-changed', detail, { bubbles: false});
