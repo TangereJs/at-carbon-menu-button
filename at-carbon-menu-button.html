@@ -247,43 +247,24 @@
         var dropdown = this.$.dropdown;
         var carbonMenu = this.$.carbonMenu;
         var bottomSheet = this.$.bottomSheet;
+        var renderMode = this._getRenderMode();
 
-        // desktop
-        if (this.renderMode == '1') {
-          if(carbonMenu.value != this.value) carbonMenu.value = this.value;
-          if(carbonMenu.items != this.items) carbonMenu.items = this.items;
-          if(carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
+        if (renderMode == 'desktop') {
+          if (carbonMenu.value != this.value) carbonMenu.value = this.value;
+          if (carbonMenu.items != this.items) carbonMenu.items = this.items;
+          if (carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
           dropdown.open = true;
           dropdown.updateDropdownPosition(trigger);
-          return;
         }
 
-        // mobile
-        if (this.renderMode == '2') {
-          if(bottomSheet.value != this.value) bottomSheet.value = this.value;
-          if(bottomSheet.items != this.items) bottomSheet.items = this.items;
-          if(bottomSheet.itemView != this.itemView) bottomSheet.itemView = this.itemView;
+        if (renderMode == 'mobile') {
+          if (bottomSheet.value != this.value) bottomSheet.value = this.value;
+          if (bottomSheet.items != this.items) bottomSheet.items = this.items;
+          if (bottomSheet.itemView != this.itemView) bottomSheet.itemView = this.itemView;
           bottomSheet.open = true;
-          return;
         }
 
-        // default
-        if (this.renderMode == '0') {
-          if (Tangere.session.browser.mobile == false) {
-            if(carbonMenu.value != this.value) carbonMenu.value = this.value;
-            if(carbonMenu.items != this.items) carbonMenu.items = this.items;
-            if(carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
-            dropdown.open = true;
-            dropdown.updateDropdownPosition(trigger);
-          } else {
-            if(bottomSheet.value != this.value) bottomSheet.value = this.value;
-            if(bottomSheet.items != this.items) bottomSheet.items = this.items;
-            if(bottomSheet.itemView != this.itemView) bottomSheet.itemView = this.itemView;
-            bottomSheet.open = true;
-          }
-
-          return;
-        }
+        return;
       },
 
       _openChanged: function(newValue, oldValue) {
@@ -296,6 +277,19 @@
         } else {
           dropdown.open = false;
           bottomSheet.open = false;
+        }
+      },
+
+      _getRenderMode: function() {
+        if(this.renderMode == '1') return 'desktop';
+        if(this.renderMode == '2') return 'mobile';
+
+        if(this.renderMode == '0') {
+          if(Tangere.session.browser.mobile == false) {
+            return 'desktop';
+          } else {
+            return 'mobile';
+          }
         }
       },
 
@@ -355,76 +349,42 @@
       _itemsChanged: function(newValue, oldValue) {
         if (newValue == undefined) return;
 
-        // desktop
-        if (this.renderMode == '1') {
+        var renderMode = this._getRenderMode();
+
+        if(renderMode == 'desktop') {
           this.$.carbonMenu.items = newValue;
-          return;
         }
 
-        // mobile
-        if (this.renderMode == '2') {
+        if(renderMode == 'mobile') {
           this.$.bottomSheet.items = newValue;
-          return;
         }
-
-        // default
-        if (this.renderMode == '0') {
-          if (Tangere.session.browser.mobile == false) {
-            this.$.carbonMenu.items = newValue;
-          } else {
-            this.$.bottomSheet.items = newValue;
-          }
-        }
-
       },
 
       _menuButtonValueChanged: function(newValue, oldValue) {
         if(newValue == undefined) return;
 
-        // desktop
-        if(this.renderMode == '1') {
+        var renderMode = this._getRenderMode();
+
+        if(renderMode == 'desktop') {
           this.$.carbonMenu.value = newValue;
-          return;
         }
 
-        // mobile
-        if(this.renderMode == '2') {
+        if(renderMode == 'mobile') {
           this.$.bottomSheet.value = newValue;
-          return;
-        }
-
-        // default
-        if(this.renderMode == '0') {
-          if(Tangere.session.browser.mobile == false) {
-            this.$.carbonMenu.value = newValue;
-          } else {
-            this.$.bottomSheet.value = newValue;
-          }
         }
       },
 
       _itemViewChanged: function(newValue, oldValue) {
         if (newValue == undefined) return;
 
-        // desktop
-        if (this.renderMode == '1') {
+        var renderMode = this._getRenderMode();
+
+        if(renderMode == 'desktop') {
           this.$.carbonMenu.itemView = newValue;
-          return;
         }
 
-        // mobile
-        if (this.renderMode == '2') {
+        if(renderMode == 'mobile') {
           this.$.bottomSheet.itemView = newValue;
-          return;
-        }
-
-        // default
-        if (this.renderMode == '0') {
-          if (Tangere.session.browser.mobile == false) {
-            this.$.carbonMenu.itemView = newValue;
-          } else {
-            this.$.bottomSheet.itemView = newValue;
-          }
         }
       }
     });
