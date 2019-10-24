@@ -353,6 +353,11 @@
 
         if(renderMode == 'desktop') {
           this.$.carbonMenu.items = newValue;
+          var self = this;
+
+          setTimeout(function () {
+            self.$.dropdown.updateDropdownPosition(self.$.trigger);
+          }, 10);
         }
 
         if(renderMode == 'mobile') {
