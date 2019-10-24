@@ -8,12 +8,12 @@
   <template>
     <style>
       :host {
-          display: block;
-          box-sizing: border-box;
-          width: 40px;
-          height: 40px;
+        display: block;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
       }
-      
+
       :host([hidden]) {
         display: none !important;
       }
@@ -23,7 +23,7 @@
         display: block;
         height: 100%;
       }
-      
+
       .trigger {
         width: 100%;
         height: 100%;
@@ -44,19 +44,20 @@
       }
 
       .title-class {
-        vertical-align: middle;        
+        vertical-align: middle;
         overflow: hidden;
         white-space: nowrap;
       }
-      
     </style>
+
     <div class="relative-container">
       <div class="absolute-container">
         <at-carbon-icon-button id="trigger" badge-label="[[badgeLabel]]" badge-color="[[badgeColor]]" disabled="[[disabled]]" class="trigger" icon="[[icon]]" on-tap="_handleIconTap" on-keydown="_trigger_onKeydown" color="[[color]]"></at-carbon-icon-button>
         <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}" on-open-changed="_handleDropdownOpenChanged" arrow>
-          <at-carbon-menu id="carbonMenu" items="{{items}}" item-view="{{itemView}}" on-value-changed="_handleMenuValueChanged"></at-carbon-menu>
+          <at-carbon-menu id="carbonMenu" on-value-changed="_handleMenuValueChanged"></at-carbon-menu>
         </at-core-dropdown>
-        <at-core-bottom-sheet id="bottomSheet" items="{{items}}" item-view="{{itemView}}" on-value-changed="_handleBottomSheetValueChanged" on-open-changed="_handleBottomSheetOpenChanged"></at-core-bottom-sheet>
+        <at-core-bottom-sheet id="bottomSheet" on-value-changed="_handleBottomSheetValueChanged" on-open-changed="_handleBottomSheetOpenChanged">
+        </at-core-bottom-sheet>
       </div>
     </div>
   </template>
@@ -95,7 +96,7 @@
           },
           schema: {
             items: {
-              properties: {                
+              properties: {
                 value: {
                   type: String,
                   title: "Value",
@@ -114,7 +115,8 @@
               }
             }
           },
-          xgridcols: "12"
+          xgridcols: "12",
+          observer: '_itemsChanged'
         },
         value: {
           type: String,
@@ -125,7 +127,8 @@
           type: String,
           xtype: 'code',
           mode: 'liquidmixed',
-          value: '<div class="item-container at-carbon-menu-button"><at-carbon-icon icon="{{icon}}" class="icon-class at-carbon-menu-button"></at-carbon-icon><span class="title-class at-carbon-menu-button">{{title}}</span></div>'
+          value: '<div class="item-container at-carbon-menu-button"><at-carbon-icon icon="{{icon}}" class="icon-class at-carbon-menu-button"></at-carbon-icon><span class="title-class at-carbon-menu-button">{{title}}</span></div>',
+          observer: '_itemViewChanged'
         },
         xOffset: {
           type: Number,
@@ -235,8 +238,8 @@
         }
       },
 
-      ready: function() { 
-        
+      ready: function() {
+
       },
 
       _openDropdownOrBottomSheet: function () {
@@ -248,6 +251,8 @@
         // desktop
         if (this.renderMode == '1') {
           if(carbonMenu.value != this.value) carbonMenu.value = this.value;
+          if(carbonMenu.items != this.items) carbonMenu.items = this.items;
+          if(carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
           dropdown.open = true;
           dropdown.updateDropdownPosition(trigger);
           return;
@@ -256,6 +261,8 @@
         // mobile
         if (this.renderMode == '2') {
           if(bottomSheet.value != this.value) bottomSheet.value = this.value;
+          if(bottomSheet.items != this.items) bottomSheet.items = this.items;
+          if(bottomSheet.itemView != this.itemView) bottomSheet.itemView = this.itemView;
           bottomSheet.open = true;
           return;
         }
@@ -264,10 +271,14 @@
         if (this.renderMode == '0') {
           if (Tangere.session.browser.mobile == false) {
             if(carbonMenu.value != this.value) carbonMenu.value = this.value;
+            if(carbonMenu.items != this.items) carbonMenu.items = this.items;
+            if(carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
             dropdown.open = true;
             dropdown.updateDropdownPosition(trigger);
           } else {
-           if(bottomSheet.value != this.value) bottomSheet.value = this.value;
+            if(bottomSheet.value != this.value) bottomSheet.value = this.value;
+            if(bottomSheet.items != this.items) bottomSheet.items = this.items;
+            if(bottomSheet.itemView != this.itemView) bottomSheet.itemView = this.itemView;
             bottomSheet.open = true;
           }
 
@@ -338,7 +349,33 @@
         if(this.value != event.detail.value) this.value = event.detail.value;
 
         var detail = { value: event.detail.value };
-        this.fire('value-changed', detail, { bubbles: false});
+        this.fire('value-changed', detail, { bubbles: false });
+      },
+
+      _itemsChanged: function(newValue, oldValue) {
+        if (newValue == undefined) return;
+
+        // desktop
+        if (this.renderMode == '1') {
+          this.$.carbonMenu.items = newValue;
+          return;
+        }
+
+        // mobile
+        if (this.renderMode == '2') {
+          this.$.bottomSheet.items = newValue;
+          return;
+        }
+
+        // default
+        if (this.renderMode == '0') {
+          if (Tangere.session.browser.mobile == false) {
+            this.$.carbonMenu.items = newValue;
+          } else {
+            this.$.bottomSheet.items = newValue;
+          }
+        }
+
       },
 
       _menuButtonValueChanged: function(newValue, oldValue) {
@@ -362,6 +399,31 @@
             this.$.carbonMenu.value = newValue;
           } else {
             this.$.bottomSheet.value = newValue;
+          }
+        }
+      },
+
+      _itemViewChanged: function(newValue, oldValue) {
+        if (newValue == undefined) return;
+
+        // desktop
+        if (this.renderMode == '1') {
+          this.$.carbonMenu.itemView = newValue;
+          return;
+        }
+
+        // mobile
+        if (this.renderMode == '2') {
+          this.$.bottomSheet.itemView = newValue;
+          return;
+        }
+
+        // default
+        if (this.renderMode == '0') {
+          if (Tangere.session.browser.mobile == false) {
+            this.$.carbonMenu.itemView = newValue;
+          } else {
+            this.$.bottomSheet.itemView = newValue;
           }
         }
       }
