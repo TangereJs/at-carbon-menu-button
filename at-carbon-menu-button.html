@@ -56,7 +56,8 @@
         <at-core-dropdown id="dropdown" position="{{position}}" x-offset="{{xOffset}}" y-offset="{{yOffset}}" on-open-changed="_handleDropdownOpenChanged" arrow>
           <at-carbon-menu id="carbonMenu" on-value-changed="_handleMenuValueChanged"></at-carbon-menu>
         </at-core-dropdown>
-        <at-core-bottom-sheet id="bottomSheet" on-value-changed="_handleBottomSheetValueChanged" on-open-changed="_handleBottomSheetOpenChanged" slide></at-core-bottom-sheet>
+        <at-core-bottom-sheet id="bottomSheet" on-value-changed="_handleBottomSheetValueChanged" on-open-changed="_handleBottomSheetOpenChanged" slide>
+        </at-core-bottom-sheet>
       </div>
     </div>
   </template>
@@ -283,8 +284,10 @@
         if(newValue == true) {
           this._openDropdownOrBottomSheet();
         } else {
-          dropdown.open = false;
-          bottomSheet.open = false;
+          if (oldValue) {
+            dropdown.open = false;
+            bottomSheet.open = false;
+          }
         }
       },
 
