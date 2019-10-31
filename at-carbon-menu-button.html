@@ -67,7 +67,7 @@
       properties: {
         position: {
           type: String,
-          value: "bottomLeft",
+          value: "left",
           xtype: "enum",
           xvaluelist: [{
             title: "Top Left",
@@ -81,6 +81,12 @@
           }, {
             title: "Bottom Right",
             value: "bottomRight"
+          }, {
+            title: "Left",
+            value: "left"
+          }, {
+            title: "Right",
+            value: "right"
           }]
         },
         icon: {
@@ -253,7 +259,10 @@
           if (carbonMenu.items != this.items) carbonMenu.items = this.items;
           if (carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
           dropdown.open = true;
-          dropdown.updateDropdownPosition(trigger);
+
+          setTimeout(function () {
+            this.$.dropdown.updateDropdownPosition(this.$.trigger);
+          }.bind(this), 10);
         }
 
         if (renderMode == 'mobile') {
