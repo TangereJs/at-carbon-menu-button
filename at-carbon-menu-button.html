@@ -327,6 +327,9 @@
       },
 
       _handleIconTap: function (event) {
+
+        event.stopPropagation();
+
         if (this._enterSpaceGuard) {
           this._enterSpaceGuard = false;
           return;
