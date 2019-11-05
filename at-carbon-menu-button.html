@@ -259,11 +259,10 @@
           if (carbonMenu.value != this.value) carbonMenu.value = this.value;
           if (carbonMenu.items != this.items) carbonMenu.items = this.items;
           if (carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
-          dropdown.open = true;
 
-          setTimeout(function () {
-            this.$.dropdown.updateDropdownPosition(this.$.trigger);
-          }.bind(this), 10);
+          // dropdown show() and hide() functions should be used to ensure positioning
+          dropdown.show();
+          dropdown.updateDropdownPosition(trigger);
         }
 
         if (renderMode == 'mobile') {
@@ -285,7 +284,8 @@
           this._openDropdownOrBottomSheet();
         } else {
           if (oldValue) {
-            dropdown.open = false;
+            // dropdown show() and hide() functions should be used to ensure positioning
+            dropdown.hide();
             bottomSheet.open = false;
           }
         }
