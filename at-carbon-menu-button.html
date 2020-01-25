@@ -254,19 +254,24 @@
         var carbonMenu = this.$.carbonMenu;
         var bottomSheet = this.$.bottomSheet;
         var renderMode = this._getRenderMode();
+               
 
         if (renderMode == 'desktop') {
           if (carbonMenu.value != this.value) carbonMenu.value = this.value;
+          carbonMenu.value = ""; // clear selection when opened
           if (carbonMenu.items != this.items) carbonMenu.items = this.items;
           if (carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
 
           // dropdown show() and hide() functions should be used to ensure positioning
-          dropdown.show();
-          dropdown.updateDropdownPosition(trigger);
+          Tangere.asyncQueue.add("at-carbon-menu-button._openDropdownOrBottomSheet", function () {
+            dropdown.show();
+            dropdown.updateDropdownPosition(trigger);
+          }, this);
         }
 
         if (renderMode == 'mobile') {
           if (bottomSheet.value != this.value) bottomSheet.value = this.value;
+          bottomSheet.value = ""; // clear selection when opened
           if (bottomSheet.items != this.items) bottomSheet.items = this.items;
           if (bottomSheet.itemView != this.itemView) bottomSheet.itemView = this.itemView;
           bottomSheet.open = true;
