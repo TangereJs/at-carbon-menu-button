@@ -262,11 +262,19 @@
           if (carbonMenu.items != this.items) carbonMenu.items = this.items;
           if (carbonMenu.itemView != this.itemView) carbonMenu.itemView = this.itemView;
 
-          // dropdown show() and hide() functions should be used to ensure positioning
-          Tangere.asyncQueue.add("at-carbon-menu-button._openDropdownOrBottomSheet", function () {
-            dropdown.show();
-            dropdown.updateDropdownPosition(trigger);
-          }, this);
+          //// dropdown show() and hide() functions should be used to ensure positioning
+          //Tangere.asyncQueue.add("at-carbon-menu-button._openDropdownOrBottomSheet", function () {
+          //  dropdown.updateDropdownPosition(trigger);
+          //  Tangere.asyncQueue.add("at-carbon-menu-button._openDropdownOrBottomSheetShow", function () {              
+          //    dropdown.show();
+          //  }, this);
+          //}, this);
+
+          // async need to allow view to be rendered
+          // first arg evt not used?           
+          this.async(function () {
+            dropdown.show(null, trigger);
+          }, 250);
         }
 
         if (renderMode == 'mobile') {
